@@ -6,9 +6,9 @@ using System.Data.Entity;
 
 namespace QfbServer.Models
 {
-    //public class QfbServerContextInitializer : CreateDatabaseIfNotExists<QfbServerContext>
+    public class QfbServerContextInitializer : CreateDatabaseIfNotExists<QfbServerContext>
     //public class QfbServerContextInitializer : DropCreateDatabaseIfModelChanges<QfbServerContext>
-    public class QfbServerContextInitializer : DropCreateDatabaseAlways<QfbServerContext>
+    //public class QfbServerContextInitializer : DropCreateDatabaseAlways<QfbServerContext>
     {
         protected override void Seed(QfbServerContext context)
         {
