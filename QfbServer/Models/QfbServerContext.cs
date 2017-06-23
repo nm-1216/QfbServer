@@ -21,6 +21,7 @@ namespace QfbServer.Models
 
         public DbSet<Project> Projects { get; set; }
         public DbSet<Page> Pages { get; set; }
-        public DbSet<MeasureData> MeasureDatas { get; set; }
+
+        public System.Data.Entity.DbSet<QfbServer.Models.MeasureData> MeasureDatas { get; set; }
     }
 }

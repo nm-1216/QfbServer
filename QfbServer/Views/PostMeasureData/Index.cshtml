@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<ul id="mds">
+	
+</ul>
+
+
+<form method="post" id="postMeasureData">
+
+	<label for="projectId" >Project ID : </label>
+	<input id="projectId" type="text" name="ProjectId" value="1"/><br/>
+
+	<label for="projectName">Project Name : </label>
+	<input id="projectName" type="text" name="ProjectName" value="Car" /><br />
+
+	<label for="productid">Product ID : </label>
+	<input id="productid" type="text" name="ProductId" value="1" /><br />
+
+	<label for="productName">ProductName : </label>
+	<input id="productName" type="text" name="ProductName" value="Door"/><br />
+
+	<label for="targetId">Target ID : </label>
+	<input id="targetId" type="text" name="TargetId" value="1" /><br />
+
+	<label for="targetName">Target Name : </label>
+	<input id="targetName" type="text" name="TargetName" value="Hole" /><br />
+
+	<label for="targetType">Target Type : </label>
+	<input id="targetType" type="text" name="TargetType" value="OK,NG" /><br />
+
+	<label for="pageId">Page ID : </label>
+	<input id="pageId" type="text" name="PageId" value="1" /><br />
+
+	<label for="measurePoint">Measure Point : </label>
+	<input id="measurePoint" type="text" name="MeasurePoint" value="sdf123" /><br />
+
+	<label for="direction">Direction : </label>
+	<input id="direction" type="text" name="Direction" value="CC" /><br />
+
+	<label for="value1">Value 1 : </label>
+	<input id="value1" type="text" name="Value1" value="OK" /><br />
+
+	<label for="value2">Value 2 : </label>
+	<input id="value2" type="text" name="Value2" value="OK" /><br />
+
+	<label for="value3">Value 3 : </label>
+	<input id="value3" type="text" name="Value3" value="NG" /><br />
+
+	<label for="value4">Value 4 : </label>
+	<input id="value4" type="text" name="Value4" value="NG" /><br />
+
+	<label for="username">Username : </label>
+	<input id="username" type="text" name="Username" value="shenyin" /><br />
+
+	<label for="timestamp">Timestamp : </label>
+	<input id="timestamp" type="text" name="Timestamp" value="124435546" /><br />
+
+	<input type="button" id="uploadMeasureData" value="Submit" />
+</form>
+
+@section scripts {
+<script type="text/javascript">
+
+	$(function () {
+		$("#uploadMeasureData").click(function () {
+			$.post("/api/MeasureDatas",
+				$("#postMeasureData").serialize(),
+				function (value) {
+					$("#mds").append("<li>" + value.Value1 + "</li>");
+				},
+				"json"
+			);
+		});
+	});
+</script>
+}
+

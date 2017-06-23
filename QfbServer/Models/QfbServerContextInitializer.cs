@@ -37,8 +37,8 @@ namespace QfbServer.Models
 
             context.Projects.Add(project);
 
-            MeasureData measureData = new MeasureData();
-            context.MeasureDatas.Add(measureData);
+            //MeasureData measureData = new MeasureData();
+            //context.MeasureDatas.Add(measureData);
 
             context.SaveChanges();
         }
