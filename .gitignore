@@ -260,8 +260,8 @@ paket-files/
 __pycache__/
 *.pyc
 
-.vs/
-.cache
+/.vs/
+*.cache
 *.pubxml
 *.csproj
 *.csproj.user
