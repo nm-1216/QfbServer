@@ -152,7 +152,7 @@ namespace Utility
             {
                 var row = sheet.GetRow(j);
                 var cel= GetValueTypeForXLSX(row.GetCell(PageNoCol) as ICell);
-                if (null != cel && !string.IsNullOrEmpty(cel.ToString().Trim()))
+                if (null != cel && !string.IsNullOrEmpty(cel.ToString().Trim()) && cel.ToString().Trim().StartsWith("页码 Page No."))
                 {
                     Page++;
                     continue;

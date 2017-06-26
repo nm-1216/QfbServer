@@ -30,7 +30,7 @@ namespace QfbServer.Controllers
                 products = db.MeasurementReport.Where(c => c.ProjectNo == b.Key).Select(d => new JsonProducts()
                 {
                     product_id = d.MeasReportID,
-                    product_name = d.ProjectNo,
+                    product_name = d.PartName+"("+d.PartNo+")",
                     targets = db.MeasurementItem.Where(f => f.MeasReportID == d.MeasReportID).Select(e => new JsonTargets()
                     {
                         target_id = e.MeasItemID,
@@ -69,8 +69,8 @@ namespace QfbServer.Controllers
 
             FileStream fs = new FileStream(mappedPath, FileMode.Create);
             //获得字节数组
-            //byte[] data = System.Text.Encoding.Default.GetBytes(TEMP.Replace("\\u", "&"));
-            byte[] data = System.Text.UTF8Encoding.Default.GetBytes(TEMP.Replace("\\u0026", "&"));
+            //byte[] data = System.Text.Encoding.Default.GetBytes(TEMP.Replace("\\u0026", "&"));
+            byte[] data = System.Text.Encoding.GetEncoding("UTF-8").GetBytes(TEMP.Replace("\\u0026", "&"));
             //开始写入
             fs.Write(data, 0, data.Length);
             //清空缓冲区、关闭流
