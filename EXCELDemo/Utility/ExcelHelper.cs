@@ -151,7 +151,7 @@ namespace Utility
             for (int j = lastHeaderRowIndex; j <= LastRowNum-1; j++)
             {
                 var row = sheet.GetRow(j);
-                var cel = row.GetCell(PageNoCol);
+                var cel= GetValueTypeForXLSX(row.GetCell(PageNoCol) as ICell);
                 if (null != cel && !string.IsNullOrEmpty(cel.ToString().Trim()))
                 {
                     Page++;
@@ -214,6 +214,7 @@ namespace Utility
                 case CellType.Error: //ERROR:
                     return cell.ErrorCellValue;
                 case CellType.Formula: //FORMULA:
+                    try { return cell.StringCellValue; } catch  { return cell.NumericCellValue; }
                 default:
                     return "=" + cell.CellFormula;
             }

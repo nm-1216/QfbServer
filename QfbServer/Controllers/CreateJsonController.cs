@@ -41,7 +41,8 @@ namespace QfbServer.Controllers
                             page_id = i.MeasPageID,
                             page_name = i.MeasPageNo,
                             //pictures = new List<string>() { string.Format("{0}_{1}_{2}_{3}.jpg", b.Key, d.PartNo, e.MeasItemName, i.MeasPageID) },
-                            pictures = new List<string>() { b.Key + "_" + d.PartNo + "_" + e.MeasItemName + "_" + i.MeasPageNo.ToString() + ".png" },
+                            
+                            pictures = new List<string>() { (b.Key + "_" + d.PartNo + "_" + e.MeasItemName + "_" + i.MeasPageNo.ToString() + ".png") },
                             measure_points = db.MeasurementPoint.Where(j => j.MeasPageID == i.MeasPageID).Select(k => new JsonPoints()
                             {
                                 direction = k.Direct,
@@ -53,6 +54,7 @@ namespace QfbServer.Controllers
                 })
             });
 
+            
             JavaScriptSerializer jsonSerialize = new JavaScriptSerializer();
             var TEMP= jsonSerialize.Serialize(_JsonProject);
 
@@ -67,7 +69,8 @@ namespace QfbServer.Controllers
 
             FileStream fs = new FileStream(mappedPath, FileMode.Create);
             //获得字节数组
-            byte[] data = System.Text.Encoding.Default.GetBytes(TEMP.Replace("\\u", "&"));
+            //byte[] data = System.Text.Encoding.Default.GetBytes(TEMP.Replace("\\u", "&"));
+            byte[] data = System.Text.UTF8Encoding.Default.GetBytes(TEMP.Replace("\\u0026", "&"));
             //开始写入
             fs.Write(data, 0, data.Length);
             //清空缓冲区、关闭流
