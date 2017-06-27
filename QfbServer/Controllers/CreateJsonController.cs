@@ -20,6 +20,8 @@ namespace QfbServer.Controllers
     {
         private QfbServerContext db = new QfbServerContext();
 
+        List<string> PageName = new List<string>() { "TRIM", "SURFACE" };
+
         // GET: api/MeasureDatas
         public IQueryable<JsonProject> GetCreateJson()
         {
@@ -35,13 +37,11 @@ namespace QfbServer.Controllers
                     {
                         target_id = e.MeasItemID,
                         target_name = e.MeasItemName,
-                        value_type = "OK,NG",
+                        value_type = PageName.Contains(e.MeasItemName.ToUpper())?"data": "OK,NG",
                         pages = db.MeasurementPage.Where(g => g.MeasItemID == e.MeasItemID).Select(i => new JsonPages()
                         {
                             page_id = i.MeasPageID,
                             page_name = i.MeasPageNo,
-                            //pictures = new List<string>() { string.Format("{0}_{1}_{2}_{3}.jpg", b.Key, d.PartNo, e.MeasItemName, i.MeasPageID) },
-                            
                             pictures = new List<string>() { (b.Key + "_" + d.PartNo + "_" + e.MeasItemName + "_" + i.MeasPageNo.ToString() + ".png") },
                             measure_points = db.MeasurementPoint.Where(j => j.MeasPageID == i.MeasPageID).Select(k => new JsonPoints()
                             {

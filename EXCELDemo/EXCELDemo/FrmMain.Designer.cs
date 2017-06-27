@@ -1,6 +1,6 @@
 ﻿namespace EXCELDemo
 {
-    partial class Form1
+    partial class FrmMain
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.btnImport = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -43,12 +44,12 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.BtnCreateJson = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.BtnCreateJson = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -218,6 +219,16 @@
             this.label6.TabIndex = 13;
             this.label6.Text = "报告单号";
             // 
+            // BtnCreateJson
+            // 
+            this.BtnCreateJson.Location = new System.Drawing.Point(809, 45);
+            this.BtnCreateJson.Name = "BtnCreateJson";
+            this.BtnCreateJson.Size = new System.Drawing.Size(75, 23);
+            this.BtnCreateJson.TabIndex = 12;
+            this.BtnCreateJson.Text = "生成JSON";
+            this.BtnCreateJson.UseVisualStyleBackColor = true;
+            this.BtnCreateJson.Click += new System.EventHandler(this.BtnCreateJson_Click);
+            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(714, 45);
@@ -279,23 +290,14 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // BtnCreateJson
-            // 
-            this.BtnCreateJson.Location = new System.Drawing.Point(809, 45);
-            this.BtnCreateJson.Name = "BtnCreateJson";
-            this.BtnCreateJson.Size = new System.Drawing.Size(75, 23);
-            this.BtnCreateJson.TabIndex = 12;
-            this.BtnCreateJson.Text = "生成JSON";
-            this.BtnCreateJson.UseVisualStyleBackColor = true;
-            this.BtnCreateJson.Click += new System.EventHandler(this.BtnCreateJson_Click);
-            // 
-            // Form1
+            // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(979, 499);
             this.Controls.Add(this.splitContainer1);
-            this.Name = "Form1";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "FrmMain";
             this.Text = "EXCEL";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();

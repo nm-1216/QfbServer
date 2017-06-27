@@ -8,19 +8,22 @@ using System.Windows.Forms;
 using Utility;
 using System.IO;
 using System.Threading;
+using System.Data.SqlClient;
+using System.Data.Common;
 
 namespace EXCELDemo
 {
-    public partial class Form1 : Form
+    public partial class FrmMain : Form
     {
-        public Form1()
+        public FrmMain()
         {
             InitializeComponent();
         }
 
         private DataSet m_ds = new DataSet();
         private Dictionary<string, Byte[]> imageDic = new Dictionary<string, byte[]>();
-        private SqlHelper m_SqlHelper = new SqlHelper();
+        Microsoft.Practices.EnterpriseLibrary.Data.Database db = Microsoft.Practices.EnterpriseLibrary.Data.DatabaseFactory.CreateDatabase("conn");
+
         private delegate void funHandle(int nValue, string strProjectNo);
         private funHandle myHandle = null;  
         /// <summary>
@@ -89,45 +92,7 @@ namespace EXCELDemo
                 MessageBox.Show("报告单号不能为空！");
                 return;
             }
-            //if (m_ds != null && m_ds.Tables.Count > 1)
-            //{
-            //    this.pictureBox1.Image = null;
-            //    dataGridView1.DataSource = null;
-            //    if (string.IsNullOrEmpty(comboBox2.Text))
-            //    {
-            //        dataGridView1.DataSource = m_ds.Tables[comboBox1.Text];
-            //    }
-            //    else
-            //    {
-            //        DataTable dt = m_ds.Tables[comboBox1.Text];
-                    
-            //        DataTable dtNew = dt.Clone();
-                    
-            //        for (int i = 0; i < dt.Rows.Count; i++)
-            //        {
-            //            if (dt.Rows[i]["PageNo"].ToString() == comboBox2.Text)//查询条件 
-            //            {
-            //                dtNew.Rows.Add(dt.Rows[i].ItemArray);
-            //            }
-            //        }
-            //        dataGridView1.DataSource = dtNew;
-
-            //        if (imageDic.ContainsKey(comboBox2.Text))
-            //        {
-            //            Byte[] bytes = imageDic[comboBox2.Text];
-
-            //            MemoryStream ms = new MemoryStream(bytes);  //核心方法  将图片加载到内存流中  
-            //            this.pictureBox1.Image = Image.FromStream(ms);
-            //        }
-                    
-            //    }
-            //    for (int i = 0; i < this.dataGridView1.Columns.Count; i++)
-            //   {
-
-            //        this.dataGridView1.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
-
-            //    }
-            //}
+            
             try
             {
                 this.dataGridView1.DataSource = null;
@@ -135,9 +100,9 @@ namespace EXCELDemo
                 //测量报告表
                 StringBuilder tempSql = new StringBuilder();
                 tempSql.Append(" select c.MeasPageNo,d.PointNo,d.PointType,d.XAxis,d.YAxis,d.ZAxis,d.UpperTol,d.LowerTol,d.Direct,d.[AVG],d.CorrectDirect");
-                tempSql.Append(" from ((MeasurementReport a left join MeasurementItem b on a.MeasReportID=b.MeasReportID) ");
-                tempSql.Append("   left join MeasurementPage c on b.MeasItemID=c.MeasItemID)");
-                tempSql.Append("   left join MeasurementPoint d on c.MeasPageID=d.MeasPageID");
+                tempSql.Append(" from ((MeasurementReports a left join MeasurementItems b on a.MeasReportID=b.MeasReportID) ");
+                tempSql.Append("   left join MeasurementPages c on b.MeasItemID=c.MeasItemID)");
+                tempSql.Append("   left join MeasurementPoints d on c.MeasPageID=d.MeasPageID");
                 tempSql.Append(" where 1=1 ");
                 tempSql.Append(" and a.ProjectNo='" + textBox4.Text + "'");
                 tempSql.Append(" and b.MeasItemName='" + comboBox1.Text + "'");
@@ -146,7 +111,18 @@ namespace EXCELDemo
                     tempSql.Append(" and c.MeasPageNo=" + comboBox2.Text);
                 }
                 tempSql.Append(" order by a.MeasReportID,b.MeasItemID,c.MeasPageID,d.MeasPointID");
-                DataTable dt = m_SqlHelper.FillDataTable(tempSql.ToString());
+
+                Os.Brain.Common.Debug.WriteLog("./debug.txt",tempSql.ToString());
+
+                var ds= db.ExecuteDataSet(CommandType.Text, tempSql.ToString());
+
+                if (null == ds&&ds.Tables.Count<=0)
+                {
+                    MessageBox.Show("查无数据");
+                    return;
+                }
+
+                DataTable dt = ds.Tables[0];
 
                 if (dt != null && dt.Rows.Count > 0)
                 {
@@ -164,14 +140,17 @@ namespace EXCELDemo
                 {
                     StringBuilder tempSqlimage = new StringBuilder();
                     tempSqlimage.Append(" select c.MeasPageImage");
-                    tempSqlimage.Append(" from (MeasurementReport a left join MeasurementItem b on a.MeasReportID=b.MeasReportID) ");
-                    tempSqlimage.Append("   left join MeasurementPage c on b.MeasItemID=c.MeasItemID");
+                    tempSqlimage.Append(" from (MeasurementReports a left join MeasurementItems b on a.MeasReportID=b.MeasReportID) ");
+                    tempSqlimage.Append("   left join MeasurementPages c on b.MeasItemID=c.MeasItemID");
                     tempSqlimage.Append(" where 1=1 ");
                     tempSqlimage.Append(" and a.ProjectNo='" + textBox4.Text + "'");
                     tempSqlimage.Append(" and b.MeasItemName='" + comboBox1.Text + "'");
                     tempSqlimage.Append(" and c.MeasPageNo=" + comboBox2.Text);
                     tempSqlimage.Append(" order by a.MeasReportID,b.MeasItemID,c.MeasPageID");
-                    DataTable dtimage = m_SqlHelper.FillDataTable(tempSqlimage.ToString());
+
+                    var dsimg = db.ExecuteDataSet(CommandType.Text, tempSqlimage.ToString());
+
+                    DataTable dtimage = dsimg.Tables[0];
 
                     if (dtimage != null && dtimage.Rows.Count > 0)
                     {
@@ -183,8 +162,9 @@ namespace EXCELDemo
                 }
                 
             }
-            catch
+            catch(Exception ex)
             {
+                MessageBox.Show(ex.Message);
             }
 
         }
@@ -219,24 +199,15 @@ namespace EXCELDemo
                 string fileName = filePath.Substring(position + 1);
                 Byte[] bytes = GetContent(filePath);
 
-                //if (imageDic.ContainsKey(comboBox2.Text))
-                //{
-                //    imageDic[comboBox2.Text]=bytes;
-                //}
-                //else
-                //{
-                //    imageDic.Add(comboBox2.Text, bytes);
-                //}
-                MemoryStream ms = new MemoryStream(bytes);  //核心方法  将图片加载到内存流中  
+                MemoryStream ms = new MemoryStream(bytes);
 
                 //测点信息表上传图片
                 string strMeasPageID = GetMeasPageID(textBox4.Text, comboBox1.Text, comboBox2.Text);
-                string strSqlMeasPage = " update MeasurementPage set MeasPageImage=@Picture "+
-                                        " where MeasPageID=" + strMeasPageID;
-                int ipa = m_SqlHelper.ExecuteNonQuery(strSqlMeasPage, bytes);
-                this.pictureBox1.Image = Image.FromStream(ms);
-
-                
+                string strSqlMeasPage = " update MeasurementPages set MeasPageImage=@Picture "+ " where MeasPageID=" + strMeasPageID;
+                DbCommand dbc = db.GetSqlStringCommand(strSqlMeasPage);
+                db.AddInParameter(dbc, "@Picture", DbType.AnsiString, bytes);
+                int ipa = db.ExecuteNonQuery(dbc);
+                this.pictureBox1.Image = Image.FromStream(ms);                
             }
 
         }
@@ -296,7 +267,6 @@ namespace EXCELDemo
             DataTable project = dataView.ToTable(true, "Project", "PartNo", "PartName");
 
             StringBuilder sb = new StringBuilder();
-            Microsoft.Practices.EnterpriseLibrary.Data.Database db = Microsoft.Practices.EnterpriseLibrary.Data.DatabaseFactory.CreateDatabase("conn");
 
             string strProjectNo = string.Empty;
 
@@ -427,8 +397,9 @@ namespace EXCELDemo
             try
             {
                 //测量报告表
-                string strSqlReport = "select top 1 Mid(ProjectNo,11,4)  from  MeasurementReport order by ProjectNo Desc";
-                DataTable dt = m_SqlHelper.FillDataTable(strSqlReport);
+                string strSqlReport = "select top 1 Mid(ProjectNo,11,4)  from  MeasurementReports order by ProjectNo Desc";
+
+                DataTable dt = db.ExecuteDataSet(CommandType.Text, strSqlReport).Tables[0];
 
                 if (dt != null && dt.Rows.Count > 0)
                 {
@@ -450,8 +421,8 @@ namespace EXCELDemo
             try
             {
                 //测量报告表
-                string strSqlReport = "select top 1 MeasReportID  from  MeasurementReport where ProjectNo='" + strProjectNo.Trim() + "'";
-                DataTable dt = m_SqlHelper.FillDataTable(strSqlReport);
+                string strSqlReport = "select top 1 MeasReportID  from  MeasurementReports where ProjectNo='" + strProjectNo.Trim() + "'";
+                DataTable dt = db.ExecuteDataSet(CommandType.Text, strSqlReport).Tables[0];
 
                 if (dt != null && dt.Rows.Count > 0)
                 {
@@ -473,8 +444,8 @@ namespace EXCELDemo
             try
             {
                 //测量报告表
-                string strSqlReport = "select top 1 Mid(MeasItemNO,11,4)  from  MeasurementItem order by MeasItemNO Desc";
-                DataTable dt = m_SqlHelper.FillDataTable(strSqlReport);
+                string strSqlReport = "select top 1 Mid(MeasItemNO,11,4)  from  MeasurementItems order by MeasItemNO Desc";
+                DataTable dt = db.ExecuteDataSet(CommandType.Text, strSqlReport).Tables[0];
 
                 if (dt != null && dt.Rows.Count > 0)
                 {
@@ -496,8 +467,8 @@ namespace EXCELDemo
             try
             {
                 //测量报告表
-                string strSqlReport = "select top 1 MeasItemID  from  MeasurementItem where MeasItemNO='" + strMeasItemNO.Trim() + "'";
-                DataTable dt = m_SqlHelper.FillDataTable(strSqlReport);
+                string strSqlReport = "select top 1 MeasItemID  from  MeasurementItems where MeasItemNO='" + strMeasItemNO.Trim() + "'";
+                DataTable dt = db.ExecuteDataSet(CommandType.Text, strSqlReport).Tables[0];
 
                 if (dt != null && dt.Rows.Count > 0)
                 {
@@ -519,8 +490,8 @@ namespace EXCELDemo
             try
             {
                 //测量报告表
-                string strSqlReport = "select top 1 MeasPageID  from  MeasurementPage where MeasItemID=" + strMeasItemID.Trim() + " and MeasPageNo=" + strMeasPageNo.Trim();
-                DataTable dt = m_SqlHelper.FillDataTable(strSqlReport);
+                string strSqlReport = "select top 1 MeasPageID  from  MeasurementPages where MeasItemID=" + strMeasItemID.Trim() + " and MeasPageNo=" + strMeasPageNo.Trim();
+                DataTable dt = db.ExecuteDataSet(CommandType.Text, strSqlReport).Tables[0];
 
                 if (dt != null && dt.Rows.Count > 0)
                 {
@@ -544,14 +515,14 @@ namespace EXCELDemo
                 //测量报告表
                 StringBuilder tempSql = new StringBuilder();
                 tempSql.Append(" select c.MeasPageID");
-                tempSql.Append(" from (MeasurementReport a left join MeasurementItem b on a.MeasReportID=b.MeasReportID) ");
-                tempSql.Append("   left join MeasurementPage c on b.MeasItemID=c.MeasItemID");
+                tempSql.Append(" from (MeasurementReports a left join MeasurementItems b on a.MeasReportID=b.MeasReportID) ");
+                tempSql.Append("   left join MeasurementPages c on b.MeasItemID=c.MeasItemID");
                 tempSql.Append(" where 1=1 ");
                 tempSql.Append(" and a.ProjectNo='" + strProjectNo + "'");
                 tempSql.Append(" and b.MeasItemName='" + strMeasItemName + "'");
                 tempSql.Append(" and c.MeasPageNo=" + strMeasPageNo);
                 tempSql.Append(" order by a.MeasReportID,b.MeasItemID,c.MeasPageID");
-                DataTable dt = m_SqlHelper.FillDataTable(tempSql.ToString());
+                DataTable dt = db.ExecuteDataSet(CommandType.Text, tempSql.ToString()).Tables[0];
                 if (dt != null && dt.Rows.Count > 0)
                 {
                     strRet = dt.Rows[0][0].ToString();
