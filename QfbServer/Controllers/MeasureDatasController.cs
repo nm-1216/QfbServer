@@ -79,6 +79,9 @@ namespace QfbServer.Controllers
                 return BadRequest(ModelState);
             }
 
+            if (string.IsNullOrEmpty(measureData.MeasurePoint))
+                measureData.MeasurePoint = string.Empty;
+
             db.MeasureDatas.Add(measureData);
             db.SaveChanges();
 
