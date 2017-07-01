@@ -74,13 +74,12 @@ namespace QfbServer.Controllers
         [ResponseType(typeof(MeasureData))]
         public IHttpActionResult PostMeasureData(MeasureData measureData)
         {
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (string.IsNullOrEmpty(measureData.MeasurePoint))
-                measureData.MeasurePoint = string.Empty;
 
             db.MeasureDatas.Add(measureData);
             db.SaveChanges();

@@ -25,7 +25,6 @@ namespace QfbServer.Models
         public String TargetType { get; set; }
         [Required]
         public int PageId { get; set; }
-        [Required]
         public String MeasurePoint { get; set; }
         public String Direction { get; set; }
         public String Value1 { get; set; }
