@@ -46,7 +46,9 @@ namespace QfbServer.Controllers
                             measure_points = db.MeasurementPoint.Where(j => j.MeasPageID == i.MeasPageID).Select(k => new JsonPoints()
                             {
                                 direction = k.Direct,
-                                point = k.PointNo
+                                point = k.PointNo,
+                                lowerTolerance=k.LowerTol,
+                                upperTolerance=k.UpperTol
                             })
 
                         })
@@ -127,6 +129,8 @@ namespace QfbServer.Controllers
     {
         public string point;
         public string direction;
+        public string upperTolerance;
+        public string lowerTolerance;
     }
 
 }

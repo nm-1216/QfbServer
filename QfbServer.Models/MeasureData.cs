@@ -27,10 +27,18 @@ namespace QfbServer.Models
         public int PageId { get; set; }
         public String MeasurePoint { get; set; }
         public String Direction { get; set; }
+        public String UpperTolerance { get; set; }
+        public String LowerTolerance { get; set; }
         public String Value1 { get; set; }
         public String Value2 { get; set; }
         public String Value3 { get; set; }
         public String Value4 { get; set; }
+        public String Value5 { get; set; }
+        public String Value6 { get; set; }
+        public String Value7 { get; set; }
+        public String Value8 { get; set; }
+        public String Value9 { get; set; }
+        public String Value10 { get; set; }
         [Required]
         public String Username { get; set; }
         [Required]
