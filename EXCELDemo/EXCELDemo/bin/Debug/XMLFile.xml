@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<module>
+	<add firstHeaderRow="4"  lastHeaderRow="5"  PageNoCol="19"  EXCEL="T"/>
+	<add cellName="PartNo" cellX="2" cellY="1" EXCEL="C" />
+	<add cellName="PartName" cellX="9" cellY="1" EXCEL="J"/>
+	<add cellName="Project" cellX="19" cellY="1" EXCEL="T"/>
+
+	<add headerText="测点号Point No." propertyName="PointNo" dataType="System.string"/>
+	<add headerText="类型" propertyName="PointType" dataType="System.string"/>
+	<add headerText="X" propertyName="XAxis" dataType="System.string"/>
+	<add headerText="Y" propertyName="YAxis" dataType="System.string"/>
+	<add headerText="Z" propertyName="ZAxis" dataType="System.string"/>
+	<add headerText="上公差Upper Tol." propertyName="UpperTol" dataType="System.string"/>
+	<add headerText="下公差LowerTol." propertyName="LowerTol" dataType="System.string"/>
+	<add headerText="控制方向Direct." propertyName="Direct" dataType="System.string"/>
+	<add headerText="均值AVG" propertyName="AVG" dataType="System.string"/>
+	<add headerText="方向修正" propertyName="CorrectDirect" dataType="System.string"/>
+
+</module>
