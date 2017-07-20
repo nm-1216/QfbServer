@@ -32,12 +32,12 @@ namespace QfbServer.Controllers
                 products = db.MeasurementReport.Where(c => c.ProjectNo == b.Key).Select(d => new JsonProducts()
                 {
                     product_id = d.MeasReportID,
-                    product_name = d.PartName+"("+d.PartNo+")",
+                    product_name = d.PartName + "(" + d.PartNo + ")",
                     targets = db.MeasurementItem.Where(f => f.MeasReportID == d.MeasReportID).Select(e => new JsonTargets()
                     {
                         target_id = e.MeasItemID,
                         target_name = e.MeasItemName,
-                        value_type = PageName.Contains(e.MeasItemName.ToUpper())?"data": "OK,NG",
+                        value_type = PageName.Contains(e.MeasItemName.ToUpper()) ? "data" : "OK,NG",
                         pages = db.MeasurementPage.Where(g => g.MeasItemID == e.MeasItemID).Select(i => new JsonPages()
                         {
                             page_id = i.MeasPageID,
@@ -47,8 +47,8 @@ namespace QfbServer.Controllers
                             {
                                 direction = k.Direct,
                                 point = k.PointNo,
-                                lowerTolerance=k.LowerTol,
-                                upperTolerance=k.UpperTol
+                                lowerTolerance = k.LowerTol,
+                                upperTolerance = k.UpperTol
                             })
 
                         })
@@ -56,11 +56,12 @@ namespace QfbServer.Controllers
                 })
             });
 
-            
+            var user = db.Users.Select(b => new { user_id = b.Id, username = b.username, password = b.password });
+
             JavaScriptSerializer jsonSerialize = new JavaScriptSerializer();
-            var TEMP= jsonSerialize.Serialize(_JsonProject);
 
-
+            #region project
+            var TEMP = jsonSerialize.Serialize(_JsonProject);
 
             var mappedPath = System.Web.Hosting.HostingEnvironment.MapPath("~/res/project.json");
 
@@ -78,6 +79,30 @@ namespace QfbServer.Controllers
             //清空缓冲区、关闭流
             fs.Flush();
             fs.Close();
+
+            #endregion
+
+            #region User
+            var tempUser = jsonSerialize.Serialize(user);
+
+            var userpath = System.Web.Hosting.HostingEnvironment.MapPath("~/res/user.json");
+
+            if (File.Exists(userpath))
+            {
+                File.Delete(userpath);
+            }
+
+            FileStream fsUser = new FileStream(userpath, FileMode.Create);
+            //获得字节数组
+            //byte[] data = System.Text.Encoding.Default.GetBytes(TEMP.Replace("\\u0026", "&"));
+            byte[] data1 = System.Text.Encoding.GetEncoding("UTF-8").GetBytes(tempUser.Replace("\\u0026", "&"));
+            //开始写入
+            fsUser.Write(data1, 0, data1.Length);
+            //清空缓冲区、关闭流
+            fsUser.Flush();
+            fsUser.Close();
+
+            #endregion
 
 
             return _JsonProject;

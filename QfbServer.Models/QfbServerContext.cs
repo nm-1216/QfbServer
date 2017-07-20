@@ -19,6 +19,8 @@ namespace QfbServer.Models
         {
         }
 
+
+        public DbSet<User> Users { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Page> Pages { get; set; }
 

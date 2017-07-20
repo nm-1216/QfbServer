@@ -10,6 +10,7 @@ using System.IO;
 using System.Threading;
 using System.Data.SqlClient;
 using System.Data.Common;
+using ExcelUp;
 
 namespace EXCELDemo
 {
@@ -18,14 +19,18 @@ namespace EXCELDemo
         public FrmMain()
         {
             InitializeComponent();
+            dataGridView1.AutoGenerateColumns = false;
+            bind();
         }
+
+        public string ApiUrl = System.Configuration.ConfigurationManager.AppSettings["ApiUrl"].ToString();
 
         private DataSet m_ds = new DataSet();
         private Dictionary<string, Byte[]> imageDic = new Dictionary<string, byte[]>();
         Microsoft.Practices.EnterpriseLibrary.Data.Database db = Microsoft.Practices.EnterpriseLibrary.Data.DatabaseFactory.CreateDatabase("conn");
 
         private delegate void funHandle(int nValue, string strProjectNo);
-        private funHandle myHandle = null;  
+        private funHandle myHandle = null;
         /// <summary>
         /// 导入Excel
         /// </summary>
@@ -49,12 +54,12 @@ namespace EXCELDemo
                     {
                         #region XmlFile OK
                         if (m_ds != null && m_ds.Tables.Count > 0)
-                        { 
+                        {
                             this.progressBar1.Visible = true;
                             this.progressBar1.Value = 0;
                             this.btnImport.Enabled = false;
-                            this.button1.Enabled = false; 
-                            this.button2.Enabled = false; 
+                            this.button1.Enabled = false;
+                            this.button2.Enabled = false;
                             Thread t = new Thread(new ParameterizedThreadStart(InsertDataBase));
                             t.Start(m_ds);
                         }
@@ -82,17 +87,17 @@ namespace EXCELDemo
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(comboBox1.Text))
+            if (string.IsNullOrEmpty(comboBox2.SelectedValue.ToString().Trim()))
             {
                 MessageBox.Show("检验项目不能为空！");
                 return;
             }
-            if (string.IsNullOrEmpty(textBox4.Text))
+            if (string.IsNullOrEmpty(comboBox1.SelectedValue.ToString()))
             {
                 MessageBox.Show("报告单号不能为空！");
                 return;
             }
-            
+
             try
             {
                 this.dataGridView1.DataSource = null;
@@ -104,19 +109,19 @@ namespace EXCELDemo
                 tempSql.Append("   left join MeasurementPages c on b.MeasItemID=c.MeasItemID)");
                 tempSql.Append("   left join MeasurementPoints d on c.MeasPageID=d.MeasPageID");
                 tempSql.Append(" where 1=1 ");
-                tempSql.Append(" and a.ProjectNo='" + textBox4.Text + "'");
-                tempSql.Append(" and b.MeasItemName='" + comboBox1.Text + "'");
-                if (!string.IsNullOrEmpty(comboBox2.Text))
+                tempSql.Append(" and a.ProjectNo='" + comboBox1.SelectedValue.ToString() + "'");
+                tempSql.Append(" and b.MeasItemName='" + comboBox2.SelectedValue.ToString() + "'");
+                if (!string.IsNullOrEmpty(txtYM.Text.Trim()))
                 {
-                    tempSql.Append(" and c.MeasPageNo=" + comboBox2.Text);
+                    tempSql.Append(" and c.MeasPageNo=" + txtYM.Text.Trim());
                 }
                 tempSql.Append(" order by a.MeasReportID,b.MeasItemID,c.MeasPageID,d.MeasPointID");
 
-                Os.Brain.Common.Debug.WriteLog("./debug.txt",tempSql.ToString());
+                Os.Brain.Common.Debug.WriteLog("./debug.txt", tempSql.ToString());
 
-                var ds= db.ExecuteDataSet(CommandType.Text, tempSql.ToString());
+                var ds = db.ExecuteDataSet(CommandType.Text, tempSql.ToString());
 
-                if (null == ds&&ds.Tables.Count<=0)
+                if (null == ds && ds.Tables.Count <= 0)
                 {
                     MessageBox.Show("查无数据");
                     return;
@@ -135,17 +140,17 @@ namespace EXCELDemo
 
                 }
 
-                
-                if (!string.IsNullOrEmpty(comboBox2.Text))
+
+                if (!string.IsNullOrEmpty(txtYM.Text.Trim()))
                 {
                     StringBuilder tempSqlimage = new StringBuilder();
                     tempSqlimage.Append(" select c.MeasPageImage");
                     tempSqlimage.Append(" from (MeasurementReports a left join MeasurementItems b on a.MeasReportID=b.MeasReportID) ");
                     tempSqlimage.Append("   left join MeasurementPages c on b.MeasItemID=c.MeasItemID");
                     tempSqlimage.Append(" where 1=1 ");
-                    tempSqlimage.Append(" and a.ProjectNo='" + textBox4.Text + "'");
-                    tempSqlimage.Append(" and b.MeasItemName='" + comboBox1.Text + "'");
-                    tempSqlimage.Append(" and c.MeasPageNo=" + comboBox2.Text);
+                    tempSqlimage.Append(" and a.ProjectNo='" + comboBox1.SelectedValue.ToString() + "'");
+                    tempSqlimage.Append(" and b.MeasItemName='" + comboBox2.SelectedValue.ToString() + "'");
+                    tempSqlimage.Append(" and c.MeasPageNo=" + txtYM.Text.Trim());
                     tempSqlimage.Append(" order by a.MeasReportID,b.MeasItemID,c.MeasPageID");
 
                     var dsimg = db.ExecuteDataSet(CommandType.Text, tempSqlimage.ToString());
@@ -155,14 +160,16 @@ namespace EXCELDemo
                     if (dtimage != null && dtimage.Rows.Count > 0)
                     {
                         Byte[] bytes = dtimage.Rows[0][0] as Byte[];
-
-                        MemoryStream ms = new MemoryStream(bytes);  //核心方法  将图片加载到内存流中  
-                        this.pictureBox1.Image = Image.FromStream(ms);
-                    }                    
+                        if (null != bytes)
+                        {
+                            MemoryStream ms = new MemoryStream(bytes);  //核心方法  将图片加载到内存流中  
+                            this.pictureBox1.Image = Image.FromStream(ms);
+                        }
+                    }
                 }
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -176,7 +183,7 @@ namespace EXCELDemo
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(comboBox2.Text))
+            if (string.IsNullOrEmpty(txtYM.Text.Trim()))
             {
                 MessageBox.Show("页码不能为空！");
                 return;
@@ -202,12 +209,12 @@ namespace EXCELDemo
                 MemoryStream ms = new MemoryStream(bytes);
 
                 //测点信息表上传图片
-                string strMeasPageID = GetMeasPageID(textBox4.Text, comboBox1.Text, comboBox2.Text);
-                string strSqlMeasPage = " update MeasurementPages set MeasPageImage=@Picture "+ " where MeasPageID=" + strMeasPageID;
+                string strMeasPageID = GetMeasPageID(comboBox1.SelectedValue.ToString(), comboBox2.SelectedValue.ToString(), txtYM.Text.Trim());
+                string strSqlMeasPage = " update MeasurementPages set MeasPageImage=@Picture " + " where MeasPageID=" + strMeasPageID;
                 DbCommand dbc = db.GetSqlStringCommand(strSqlMeasPage);
                 db.AddInParameter(dbc, "@Picture", DbType.AnsiString, bytes);
                 int ipa = db.ExecuteNonQuery(dbc);
-                this.pictureBox1.Image = Image.FromStream(ms);                
+                this.pictureBox1.Image = Image.FromStream(ms);
             }
 
         }
@@ -233,7 +240,7 @@ namespace EXCELDemo
         private void InsertDataBase(object ods)
         {
             MethodInvoker mi = new MethodInvoker(ShowProgressBar);
-            this.BeginInvoke(mi);  
+            this.BeginInvoke(mi);
 
             DataSet ds = ods as DataSet;
             if (ds == null)
@@ -283,13 +290,13 @@ namespace EXCELDemo
                     );
             }
 
-            db.ExecuteNonQuery(CommandType.Text,sb.ToString());
+            db.ExecuteNonQuery(CommandType.Text, sb.ToString());
 
             this.Invoke(this.myHandle, new object[] { (10 * 100 / 100), strProjectNo });
 
             var ProjectId = 0;
 
-            ProjectId=int.Parse(db.ExecuteScalar(CommandType.Text, "select top 1 * from MeasurementReports order by MeasReportID desc").ToString());
+            ProjectId = int.Parse(db.ExecuteScalar(CommandType.Text, "select top 1 * from MeasurementReports order by MeasReportID desc").ToString());
             #endregion
 
 
@@ -315,7 +322,7 @@ namespace EXCELDemo
             foreach (DataRow row in Pages.Rows)
             {
                 var ItemId = 0;
-                ItemId = int.Parse(db.ExecuteScalar(CommandType.Text, string.Format("select top 1 * from MeasurementItems where [MeasReportID]={0} and [MeasItemNO]='{1}'",ProjectId,row["SheetName"])).ToString());
+                ItemId = int.Parse(db.ExecuteScalar(CommandType.Text, string.Format("select top 1 * from MeasurementItems where [MeasReportID]={0} and [MeasItemNO]='{1}'", ProjectId, row["SheetName"])).ToString());
 
                 sb.AppendFormat("INSERT INTO [dbo].[MeasurementPages]([MeasItemID],[MeasPageNo]) VALUES ({0},'{1}');"
                     , ItemId
@@ -334,11 +341,11 @@ namespace EXCELDemo
             foreach (DataRow row in point.Rows)
             {
                 var PageId = 0;
-                PageId = int.Parse(db.ExecuteScalar(CommandType.Text, 
+                PageId = int.Parse(db.ExecuteScalar(CommandType.Text,
                     string.Format("select [MeasPageID] from [MeasurementPages] a left join [dbo].[MeasurementItems] b on a.[MeasItemID]=b.MeasItemID where b.MeasItemNO='{0}' and [MeasPageNo]={1} and [MeasReportID]={2}",
                     row["SheetName"],
                     row["Pages"],
-                    ProjectId                    
+                    ProjectId
                     )
                 ).ToString());
 
@@ -384,7 +391,7 @@ namespace EXCELDemo
             this.button1.Enabled = true;
             this.button2.Enabled = true;
             this.btnImport.Enabled = true;
-            
+
 
         }
 
@@ -406,7 +413,7 @@ namespace EXCELDemo
                     strRet = (Convert.ToInt32(dt.Rows[0][0].ToString()) + 1).ToString("0000");
                 }
             }
-            catch 
+            catch
             {
             }
             return strRet;
@@ -540,9 +547,9 @@ namespace EXCELDemo
         /// <param name="strMeasItemNO"></param>
         /// <param name="strResult"></param>
         /// <returns></returns>
-        private string CheckIsNull(object strValue,string strResult)
+        private string CheckIsNull(object strValue, string strResult)
         {
-            if (strValue!= null)
+            if (strValue != null)
             {
                 if (!string.IsNullOrEmpty(strValue.ToString()))
                 {
@@ -553,7 +560,7 @@ namespace EXCELDemo
                     return strResult;
                 }
             }
-            else 
+            else
             {
                 return strResult;
             }
@@ -567,11 +574,11 @@ namespace EXCELDemo
             myHandle = new funHandle(SetProgressValue);
         }
 
-        public void SetProgressValue(int value, string strProjectNo) 
+        public void SetProgressValue(int value, string strProjectNo)
         {
-                  
+
             this.progressBar1.Value = value;
-           // this.label1.Text = "Progress :" + value.ToString() + "%";
+            // this.label1.Text = "Progress :" + value.ToString() + "%";
 
             // 这里关闭，比较好，呵呵！  
             if (value > this.progressBar1.Maximum - 1)
@@ -581,7 +588,7 @@ namespace EXCELDemo
                 this.btnImport.Enabled = true;//设置可用
                 this.button1.Enabled = true;
                 this.button2.Enabled = true;
-                textBox4.Text = strProjectNo;
+                bind();
             }
         }
 
@@ -593,15 +600,113 @@ namespace EXCELDemo
 
         private void BtnCreateJson_Click(object sender, EventArgs e)
         {
-            try
+            if (MessageBox.Show("生成新的JSON文件吗 ?", "Confirm Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                Os.Brain.Net.UrlRequest.GetText("http://114.55.105.88:8088/api/CreateJson");
-                MessageBox.Show("生成成功");
+                try
+                {
+                    Os.Brain.Net.UrlRequest.GetText(ApiUrl + "/api/CreateJson");
+                    MessageBox.Show("生成成功");
+                }
+                catch (Exception EX)
+                {
+                    MessageBox.Show(EX.Message);
+                }
+
             }
-            catch (Exception EX)
+        }
+
+        private void btnUser_Click(object sender, EventArgs e)
+        {
+            FrmUser user = new FrmUser();
+            user.Show();
+        }
+
+        private void btnResult_Click(object sender, EventArgs e)
+        {
+            FrmResult result = new FrmResult();
+            result.Show();
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == 0x112)
             {
-                MessageBox.Show(EX.Message);
+                switch ((int)m.WParam)
+                {
+                    //禁止双击标题栏关闭窗体
+                    case 0xF063:
+                    case 0xF093:
+                        m.WParam = IntPtr.Zero;
+                        break;
+
+                    //禁止拖拽标题栏还原窗体
+                    //case 0xF012:
+                    //case 0xF010:
+                    //    m.WParam = IntPtr.Zero;
+                    //    break;
+
+                    //禁止双击标题栏
+                    case 0xf122:
+                        m.WParam = IntPtr.Zero;
+                        break;
+
+
+                    //禁止最大化按钮
+                    case 0xf020:
+                        m.WParam = IntPtr.Zero;
+                        break;
+
+                    //禁止最小化按钮
+                    case 0xf030:
+                        m.WParam = IntPtr.Zero;
+                        break;
+
+                    //禁止还原按钮
+                    case 0xf120:
+                        m.WParam = IntPtr.Zero;
+                        break;
+                }
             }
+            base.WndProc(ref m);
+        }
+
+
+        private void bind()
+        {
+
+            string strSqlReport = "select distinct [ProjectNo] text,[ProjectNo] value  from [MeasurementReports]";
+            DataTable dt = db.ExecuteDataSet(CommandType.Text, strSqlReport).Tables[0];
+
+            DataRow newRow;
+            newRow = dt.NewRow();
+            newRow["text"] = "==请选择项目名称==";
+            newRow["value"] = "";
+            dt.Rows.InsertAt(newRow, 0);
+
+            comboBox1.ValueMember = "value";
+            comboBox1.DisplayMember = "text";
+            comboBox1.DataSource = dt;
+
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var temp = comboBox1.SelectedValue.ToString();
+
+            string strSqlReport = "SELECT distinct [MeasItemNO] text,[MeasItemNO] value FROM [MeasurementItems] A LEFT JOIN [dbo].[MeasurementReports] B ON A.MeasReportID=B.MeasReportID WHERE B.ProjectNo='" + temp + "'";
+            DataTable dt = db.ExecuteDataSet(CommandType.Text, strSqlReport).Tables[0];
+
+            DataRow newRow;
+            newRow = dt.NewRow();
+            newRow["text"] = "==请选择检测项目==";
+            newRow["value"] = "";
+            dt.Rows.InsertAt(newRow, 0);
+
+            comboBox2.ValueMember = "value";
+            comboBox2.DisplayMember = "text";
+            comboBox2.DataSource = dt;
+
         }
     }
 }

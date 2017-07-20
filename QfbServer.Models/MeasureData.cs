@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QfbServer.Models
 {
     public class MeasureData
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        [NotMapped]
+        public static readonly string CONN = "conn";
+
+
         [ScaffoldColumn(false)]
         public int Id { get; set; }
         [Required]
@@ -44,23 +52,15 @@ namespace QfbServer.Models
         [Required]
         public long Timestamp { get; set; }
 
+        [NotMapped]
+        public DateTime checktime { get {
+                DateTime start = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                DateTime date = start.AddMilliseconds(Timestamp).ToLocalTime();
 
-        //[ScaffoldColumn(false)]
-        //public int Id { get; set; }
+                return date;
+            } }
 
-        //public Page Page { get; set; }
+        
 
-        ///// <summary>
-        ///// MeasurePoint 的 Name 和 Id 用 , 隔开，放在一个字符串里
-        ///// </summary>
-        //public String MeasurePoint { get; set; }
-
-        //public String Value1 { get; set; }
-        //public String Value2 { get; set; }
-        //public String Value3 { get; set; }
-        //public String Value4 { get; set; }
-
-        //public String Username { get; set; }
-        //public long Timestamp { get; set; }
     }
 }
