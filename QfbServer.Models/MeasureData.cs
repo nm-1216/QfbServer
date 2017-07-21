@@ -18,6 +18,12 @@ namespace QfbServer.Models
 
         [ScaffoldColumn(false)]
         public int Id { get; set; }
+
+        /// <summary>
+        /// 检测点编号
+        /// </summary>
+        public int PointId { get; set; }
+
         [Required]
         public int ProjectId { get; set; }
         [Required]

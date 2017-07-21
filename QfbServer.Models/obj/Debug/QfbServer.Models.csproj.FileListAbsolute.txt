@@ -18,3 +18,5 @@ E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\obj\Debug\QfbServer.Mode
 E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\obj\Debug\QfbServer.Models.Migrations._20170713.resources
 E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\obj\Debug\QfbServer.Models.csproj.GenerateResource.Cache
 E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\obj\Debug\QfbServer.Models.Migrations._20170720.resources
+E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\obj\Debug\QfbServer.Models.csprojResolveAssemblyReference.cache
+E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\obj\Debug\QfbServer.Models.Migrations._20170721.resources
