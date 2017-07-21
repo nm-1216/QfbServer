@@ -48,10 +48,11 @@ namespace QfbServer.Models
             Database db = DatabaseFactory.CreateDatabase(CONN);
             DbCommand dbc;
 
-            dbc = db.GetSqlStringCommand(string.Format(TSQL.INSERT_VALUE_IDENTITY, "[dbo].[Users]", "[username], [password]", "@username, @password"));
+            dbc = db.GetSqlStringCommand(string.Format(TSQL.INSERT_VALUE_IDENTITY, "[dbo].[Users]", "[username], [password],[usertype]", "@username, @password,@usertype"));
 
             db.AddInParameter(dbc, "@username", DbType.String, this.username);
             db.AddInParameter(dbc, "@password", DbType.String, this.password);
+            db.AddInParameter(dbc, "@usertype", DbType.Int32, this.userType);
 
             return db.ExecuteScalar(dbc);
         }
@@ -135,7 +136,7 @@ namespace QfbServer.Dal
     using System.Diagnostics;
 
     using Microsoft.Practices.EnterpriseLibrary.Data;
-
+    using Models;
     using Os.Brain.Data;
     using Os.Brain.Data.MsSQL;
 
@@ -436,8 +437,9 @@ namespace QfbServer.Dal
         	{
         		if (!dr.IsDBNull(0)) model.Id = dr.GetInt32(0);
         		if (!dr.IsDBNull(1)) model.username = dr.GetString(1);
-        		if (!dr.IsDBNull(2)) model.password = dr.GetString(2);
-        	}
+                if (!dr.IsDBNull(2)) model.password = dr.GetString(2);
+                if (!dr.IsDBNull(3)) model.userType = (UserType)dr.GetInt32(3);
+            }
         }
 
         protected void LoadFromReader1(IDataReader dr,QfbServer.Models.User model)
@@ -447,7 +449,8 @@ namespace QfbServer.Dal
                 model.Id = (int)dr["Id"];
                 model.username = dr["username"].ToString();
                 model.password = dr["password"].ToString();
-        	}
+                model.userType = (UserType)dr["userType"]; ;
+            }
         }
     }
 }

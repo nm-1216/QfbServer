@@ -41,14 +41,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Pnl2 = new System.Windows.Forms.Panel();
             this.dgvList = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblPage = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnPre = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.ProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TargetName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,6 +62,14 @@
             this.Value10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.checktime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblPage = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnPre = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.Pnl1.SuspendLayout();
             this.Pnl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
@@ -92,7 +92,7 @@
             this.Pnl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.Pnl1.Location = new System.Drawing.Point(0, 0);
             this.Pnl1.Name = "Pnl1";
-            this.Pnl1.Size = new System.Drawing.Size(952, 37);
+            this.Pnl1.Size = new System.Drawing.Size(1014, 37);
             this.Pnl1.TabIndex = 0;
             // 
             // btnSearch
@@ -185,7 +185,7 @@
             this.Pnl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Pnl2.Location = new System.Drawing.Point(0, 37);
             this.Pnl2.Name = "Pnl2";
-            this.Pnl2.Size = new System.Drawing.Size(952, 294);
+            this.Pnl2.Size = new System.Drawing.Size(1014, 333);
             this.Pnl2.TabIndex = 0;
             // 
             // dgvList
@@ -219,90 +219,8 @@
             this.dgvList.Location = new System.Drawing.Point(0, 0);
             this.dgvList.Name = "dgvList";
             this.dgvList.RowTemplate.Height = 23;
-            this.dgvList.Size = new System.Drawing.Size(952, 264);
+            this.dgvList.Size = new System.Drawing.Size(1014, 303);
             this.dgvList.TabIndex = 0;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Salmon;
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.lblPage);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 264);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(952, 30);
-            this.panel1.TabIndex = 0;
-            // 
-            // lblPage
-            // 
-            this.lblPage.AutoSize = true;
-            this.lblPage.Location = new System.Drawing.Point(176, 9);
-            this.lblPage.Name = "lblPage";
-            this.lblPage.Size = new System.Drawing.Size(0, 12);
-            this.lblPage.TabIndex = 3;
-            this.lblPage.Visible = false;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.btnPre);
-            this.panel2.Controls.Add(this.btnNext);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(711, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(241, 30);
-            this.panel2.TabIndex = 2;
-            // 
-            // btnPre
-            // 
-            this.btnPre.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPre.Location = new System.Drawing.Point(72, 3);
-            this.btnPre.Name = "btnPre";
-            this.btnPre.Size = new System.Drawing.Size(75, 23);
-            this.btnPre.TabIndex = 0;
-            this.btnPre.Text = "上一页";
-            this.btnPre.UseVisualStyleBackColor = true;
-            this.btnPre.Click += new System.EventHandler(this.btnPre_Click);
-            // 
-            // btnNext
-            // 
-            this.btnNext.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNext.Location = new System.Drawing.Point(156, 3);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(75, 23);
-            this.btnNext.TabIndex = 0;
-            this.btnNext.Text = "下一页";
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(201, 9);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(0, 12);
-            this.label5.TabIndex = 1;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(29, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 12);
-            this.label4.TabIndex = 1;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(130, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(0, 12);
-            this.label7.TabIndex = 4;
             // 
             // ProjectName
             // 
@@ -460,11 +378,93 @@
             this.checktime.Name = "checktime";
             this.checktime.ReadOnly = true;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Salmon;
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.lblPage);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 303);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1014, 30);
+            this.panel1.TabIndex = 0;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label7.Location = new System.Drawing.Point(130, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(0, 12);
+            this.label7.TabIndex = 4;
+            // 
+            // lblPage
+            // 
+            this.lblPage.AutoSize = true;
+            this.lblPage.Location = new System.Drawing.Point(176, 9);
+            this.lblPage.Name = "lblPage";
+            this.lblPage.Size = new System.Drawing.Size(0, 12);
+            this.lblPage.TabIndex = 3;
+            this.lblPage.Visible = false;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnPre);
+            this.panel2.Controls.Add(this.btnNext);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(773, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(241, 30);
+            this.panel2.TabIndex = 2;
+            // 
+            // btnPre
+            // 
+            this.btnPre.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPre.Location = new System.Drawing.Point(72, 3);
+            this.btnPre.Name = "btnPre";
+            this.btnPre.Size = new System.Drawing.Size(75, 23);
+            this.btnPre.TabIndex = 0;
+            this.btnPre.Text = "上一页";
+            this.btnPre.UseVisualStyleBackColor = true;
+            this.btnPre.Click += new System.EventHandler(this.btnPre_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNext.Location = new System.Drawing.Point(156, 3);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(75, 23);
+            this.btnNext.TabIndex = 0;
+            this.btnNext.Text = "下一页";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.Location = new System.Drawing.Point(201, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(0, 12);
+            this.label5.TabIndex = 1;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(29, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 12);
+            this.label4.TabIndex = 1;
+            // 
             // FrmResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(952, 331);
+            this.ClientSize = new System.Drawing.Size(1014, 370);
             this.Controls.Add(this.Pnl2);
             this.Controls.Add(this.Pnl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -472,8 +472,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmResult";
-            this.Text = "测量历史数据";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "上海赛科利质量测量数据管理平台系统 - 测量历史数据";
             this.Load += new System.EventHandler(this.FrmResult_Load);
             this.Pnl1.ResumeLayout(false);
             this.Pnl1.PerformLayout();

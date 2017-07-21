@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUser));
             this.Pnl1 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.btnDel = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.txtUser = new System.Windows.Forms.TextBox();
@@ -38,19 +39,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Pnl2 = new System.Windows.Forms.Panel();
             this.dgvList = new System.Windows.Forms.DataGridView();
+            this.rbtnPad = new System.Windows.Forms.RadioButton();
+            this.rBtnApplication = new System.Windows.Forms.RadioButton();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.Pnl1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.Pnl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Pnl1
             // 
-            this.Pnl1.BackColor = System.Drawing.Color.Gray;
+            this.Pnl1.BackColor = System.Drawing.SystemColors.Control;
+            this.Pnl1.Controls.Add(this.rBtnApplication);
+            this.Pnl1.Controls.Add(this.rbtnPad);
             this.Pnl1.Controls.Add(this.panel1);
             this.Pnl1.Controls.Add(this.btnAdd);
             this.Pnl1.Controls.Add(this.txtUser);
@@ -60,8 +64,17 @@
             this.Pnl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.Pnl1.Location = new System.Drawing.Point(0, 0);
             this.Pnl1.Name = "Pnl1";
-            this.Pnl1.Size = new System.Drawing.Size(832, 41);
+            this.Pnl1.Size = new System.Drawing.Size(1014, 41);
             this.Pnl1.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnDel);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(814, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 41);
+            this.panel1.TabIndex = 3;
             // 
             // btnDel
             // 
@@ -75,7 +88,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(350, 10);
+            this.btnAdd.Location = new System.Drawing.Point(560, 10);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 2;
@@ -102,7 +115,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(180, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 12);
@@ -113,7 +126,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(21, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 12);
@@ -126,7 +139,7 @@
             this.Pnl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Pnl2.Location = new System.Drawing.Point(0, 41);
             this.Pnl2.Name = "Pnl2";
-            this.Pnl2.Size = new System.Drawing.Size(832, 220);
+            this.Pnl2.Size = new System.Drawing.Size(1014, 329);
             this.Pnl2.TabIndex = 0;
             // 
             // dgvList
@@ -135,17 +148,42 @@
             this.dgvList.AllowUserToDeleteRows = false;
             this.dgvList.AllowUserToResizeColumns = false;
             this.dgvList.AllowUserToResizeRows = false;
+            this.dgvList.BackgroundColor = System.Drawing.Color.White;
             this.dgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
-            this.username,
-            this.Column1});
+            this.UserType,
+            this.username});
             this.dgvList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvList.Location = new System.Drawing.Point(0, 0);
             this.dgvList.Name = "dgvList";
             this.dgvList.RowTemplate.Height = 23;
-            this.dgvList.Size = new System.Drawing.Size(832, 220);
+            this.dgvList.Size = new System.Drawing.Size(1014, 329);
             this.dgvList.TabIndex = 0;
+            // 
+            // rbtnPad
+            // 
+            this.rbtnPad.AutoSize = true;
+            this.rbtnPad.Checked = true;
+            this.rbtnPad.Location = new System.Drawing.Point(352, 13);
+            this.rbtnPad.Name = "rbtnPad";
+            this.rbtnPad.Size = new System.Drawing.Size(65, 16);
+            this.rbtnPad.TabIndex = 4;
+            this.rbtnPad.TabStop = true;
+            this.rbtnPad.Text = "PAD用户";
+            this.rbtnPad.UseVisualStyleBackColor = true;
+            this.rbtnPad.CheckedChanged += new System.EventHandler(this.rbtnPad_CheckedChanged);
+            // 
+            // rBtnApplication
+            // 
+            this.rBtnApplication.AutoSize = true;
+            this.rBtnApplication.Location = new System.Drawing.Point(441, 13);
+            this.rBtnApplication.Name = "rBtnApplication";
+            this.rBtnApplication.Size = new System.Drawing.Size(71, 16);
+            this.rBtnApplication.TabIndex = 4;
+            this.rBtnApplication.Text = "后台用户";
+            this.rBtnApplication.UseVisualStyleBackColor = true;
+            this.rBtnApplication.CheckedChanged += new System.EventHandler(this.rBtnApplication_CheckedChanged);
             // 
             // Id
             // 
@@ -153,34 +191,28 @@
             this.Id.HeaderText = "编号";
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // UserType
+            // 
+            this.UserType.DataPropertyName = "UserTypeName";
+            this.UserType.HeaderText = "类型";
+            this.UserType.Name = "UserType";
+            this.UserType.ReadOnly = true;
             // 
             // username
             // 
+            this.username.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.username.DataPropertyName = "username";
             this.username.HeaderText = "用户名";
             this.username.Name = "username";
             this.username.ReadOnly = true;
             // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.HeaderText = "";
-            this.Column1.Name = "Column1";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnDel);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(632, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 41);
-            this.panel1.TabIndex = 3;
-            // 
             // FrmUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(832, 261);
+            this.ClientSize = new System.Drawing.Size(1014, 370);
             this.Controls.Add(this.Pnl2);
             this.Controls.Add(this.Pnl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -189,14 +221,13 @@
             this.MinimizeBox = false;
             this.Name = "FrmUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "用户管理";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Text = "上海赛科利质量测量数据管理平台系统 - 用户管理";
             this.Load += new System.EventHandler(this.FrmUser_Load);
             this.Pnl1.ResumeLayout(false);
             this.Pnl1.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.Pnl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -212,9 +243,11 @@
         private System.Windows.Forms.Button btnDel;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DataGridView dgvList;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn username;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RadioButton rbtnPad;
+        private System.Windows.Forms.RadioButton rBtnApplication;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn username;
     }
 }

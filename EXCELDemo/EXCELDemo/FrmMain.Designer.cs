@@ -1,4 +1,4 @@
-﻿namespace EXCELDemo
+﻿namespace ExcelUp
 {
     partial class FrmMain
     {

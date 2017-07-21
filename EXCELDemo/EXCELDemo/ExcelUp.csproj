@@ -77,6 +77,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmIndex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmIndex.Designer.cs">
+      <DependentUpon>FrmIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmIndex1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmIndex1.Designer.cs">
+      <DependentUpon>FrmIndex1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmIndex2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmIndex2.Designer.cs">
+      <DependentUpon>FrmIndex2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmIndex4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmIndex4.Designer.cs">
+      <DependentUpon>FrmIndex4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +127,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmIndex.resx">
+      <DependentUpon>FrmIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmIndex1.resx">
+      <DependentUpon>FrmIndex1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmIndex2.resx">
+      <DependentUpon>FrmIndex2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmIndex4.resx">
+      <DependentUpon>FrmIndex4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>

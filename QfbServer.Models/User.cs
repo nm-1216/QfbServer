@@ -24,6 +24,15 @@ namespace QfbServer.Models
         /// </summary>
         public string password { get; set; }
 
-        
+        /// <summary>
+        /// 用户类型
+        /// </summary>
+        public virtual UserType userType { get; set; }
+    }
+
+    public enum UserType : int
+    {
+        Application = 0,
+        Pad = 1
     }
 }

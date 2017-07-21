@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 using System.Data.Common;
 using ExcelUp;
 
-namespace EXCELDemo
+namespace ExcelUp
 {
     public partial class FrmMain : Form
     {
@@ -611,7 +611,6 @@ namespace EXCELDemo
                 {
                     MessageBox.Show(EX.Message);
                 }
-
             }
         }
 

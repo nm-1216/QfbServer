@@ -45,7 +45,7 @@ namespace ExcelUp
                     return;
                 }
 
-                var temp = new User() { username = txtUser.Text.Trim(), password = txtPwd.Text.Trim() };
+                var temp = new User() { username = txtUser.Text.Trim(), password = txtPwd.Text.Trim(), userType = rbtnPad.Checked ? QfbServer.Models.UserType.Pad : QfbServer.Models.UserType.Application };
 
                 try
                 {
@@ -149,5 +149,14 @@ namespace ExcelUp
             base.WndProc(ref m);
         }
 
+        private void rbtnPad_CheckedChanged(object sender, EventArgs e)
+        {
+            rBtnApplication.Checked = !rbtnPad.Checked;
+        }
+
+        private void rBtnApplication_CheckedChanged(object sender, EventArgs e)
+        {
+            rbtnPad.Checked = !rBtnApplication.Checked;
+        }
     }
 }

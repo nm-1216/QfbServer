@@ -23,9 +23,14 @@ namespace QfbServer.Controllers
         List<string> PageName = new List<string>() { "TRIM", "SURFACE" };
 
         // GET: api/MeasureDatas
-        public IQueryable<JsonProject> GetCreateJson()
+        public IQueryable<JsonProject> GetCreateJson(string ids,string username)
         {
-            var _JsonProject = db.MeasurementReport.GroupBy(b => b.ProjectNo).Select(b => new JsonProject()
+
+            var xxx = ids.Split(',');
+
+            var intArray = Array.ConvertAll<string, int>(xxx, s => int.Parse(s));
+
+            var _JsonProject = db.MeasurementReport.Where(b=> intArray.Contains(b.MeasReportID)).GroupBy(b => b.ProjectNo).Select(b => new JsonProject()
             {
                 project_id = b.Min(a => a.MeasReportID),
                 project_name = b.Key,
@@ -46,6 +51,7 @@ namespace QfbServer.Controllers
                             measure_points = db.MeasurementPoint.Where(j => j.MeasPageID == i.MeasPageID).Select(k => new JsonPoints()
                             {
                                 direction = k.Direct,
+                                pointId=k.MeasPointID,
                                 point = k.PointNo,
                                 lowerTolerance = k.LowerTol,
                                 upperTolerance = k.UpperTol
@@ -63,7 +69,7 @@ namespace QfbServer.Controllers
             #region project
             var TEMP = jsonSerialize.Serialize(_JsonProject);
 
-            var mappedPath = System.Web.Hosting.HostingEnvironment.MapPath("~/res/project.json");
+            var mappedPath = System.Web.Hosting.HostingEnvironment.MapPath("~/res/"+ username + ".json");
 
             if (File.Exists(mappedPath))
             {
@@ -152,6 +158,7 @@ namespace QfbServer.Controllers
 
     public class JsonPoints
     {
+        public int pointId;
         public string point;
         public string direction;
         public string upperTolerance;

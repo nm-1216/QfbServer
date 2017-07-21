@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace EXCELDemo
+namespace ExcelUp
 {
     static class Program
     {
@@ -15,7 +15,13 @@ namespace EXCELDemo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMain());
+
+            FrmLogin login = new FrmLogin();
+            DialogResult loginDialogResult = login.ShowDialog();
+            if (loginDialogResult == DialogResult.OK)
+            {
+                Application.Run(new FrmIndex());
+            }
         }
     }
 }
