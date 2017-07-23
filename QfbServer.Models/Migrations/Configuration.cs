@@ -10,7 +10,6 @@ namespace QfbServer.Models.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "QfbServer.Models.QfbServerContext";
         }
 
         protected override void Seed(QfbServer.Models.QfbServerContext context)

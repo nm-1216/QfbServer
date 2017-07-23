@@ -14,12 +14,19 @@ namespace ExcelUp
     public partial class FrmIndex1 : Form
     {
         private int id = 0;
+        string ProjectNo = string.Empty;
+        string PartNo = string.Empty;
+        string PartName = string.Empty;
+
         Microsoft.Practices.EnterpriseLibrary.Data.Database db = Microsoft.Practices.EnterpriseLibrary.Data.DatabaseFactory.CreateDatabase("conn");
 
 
-        public FrmIndex1(int Pid)
+        public FrmIndex1(int Pid, string ProjectNo, string PartNo, string PartName)
         {
             this.id = Pid;
+            this.ProjectNo = ProjectNo;
+            this.PartNo = PartNo;
+            this.PartName = PartName;
             InitializeComponent();
             GvList.AutoGenerateColumns = false;
 
@@ -58,51 +65,11 @@ namespace ExcelUp
 
         private void FrmIndex1_Load(object sender, EventArgs e)
         {
+            label2.Text = string.Format("项目号：{0}，零件号：{1}，零件名称：{2}", ProjectNo, PartNo, PartName);
+
             bind();
         }
 
-        protected override void WndProc(ref Message m)
-        {
-            if (m.Msg == 0x112)
-            {
-                switch ((int)m.WParam)
-                {
-                    //禁止双击标题栏关闭窗体
-                    case 0xF063:
-                    case 0xF093:
-                        m.WParam = IntPtr.Zero;
-                        break;
-
-                    //禁止拖拽标题栏还原窗体
-                    //case 0xF012:
-                    //case 0xF010:
-                    //    m.WParam = IntPtr.Zero;
-                    //    break;
-
-                    //禁止双击标题栏
-                    case 0xf122:
-                        m.WParam = IntPtr.Zero;
-                        break;
-
-
-                    //禁止最大化按钮
-                    case 0xf020:
-                        m.WParam = IntPtr.Zero;
-                        break;
-
-                    //禁止最小化按钮
-                    case 0xf030:
-                        m.WParam = IntPtr.Zero;
-                        break;
-
-                    //禁止还原按钮
-                    case 0xf120:
-                        m.WParam = IntPtr.Zero;
-                        break;
-                }
-            }
-            base.WndProc(ref m);
-        }
 
 
 

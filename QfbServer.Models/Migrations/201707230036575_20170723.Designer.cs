@@ -7,13 +7,13 @@ namespace QfbServer.Models.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class _20170721 : IMigrationMetadata
+    public sealed partial class _20170723 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(_20170721));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_20170723));
         
         string IMigrationMetadata.Id
         {
-            get { return "201707210318196_20170721"; }
+            get { return "201707230036575_20170723"; }
         }
         
         string IMigrationMetadata.Source

@@ -7,14 +7,11 @@ E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\bin\Release\EntityFramew
 E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\bin\Release\EntityFramework.SqlServer.xml
 E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\obj\Release\QfbServer.Models.dll
 E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\obj\Release\QfbServer.Models.pdb
-E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\obj\Release\QfbServer.Models.Migrations.InitialCreate.resources
 E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\obj\Release\QfbServer.Models.csproj.GenerateResource.Cache
-E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\obj\Release\QfbServer.Models.Migrations._20170707.resources
 E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\bin\Release\Microsoft.Practices.EnterpriseLibrary.Common.dll
 E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\bin\Release\Microsoft.Practices.EnterpriseLibrary.Data.dll
 E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\bin\Release\Os.Brain.Core.dll
 E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\bin\Release\Microsoft.Practices.Unity.dll
 E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\bin\Release\Microsoft.Practices.ServiceLocation.dll
 E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\bin\Release\Microsoft.Practices.Unity.Interception.dll
-E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\obj\Release\QfbServer.Models.Migrations._20170713.resources
-E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\obj\Release\QfbServer.Models.Migrations._20170720.resources
+E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\obj\Release\QfbServer.Models.Migrations._20170723.resources

@@ -27,8 +27,9 @@ E:\工作\1.项目\刘志刚\QfbServer\EXCELDemo\EXCELDemo\bin\Debug\EntityFrame
 E:\工作\1.项目\刘志刚\QfbServer\EXCELDemo\EXCELDemo\obj\x86\Debug\ExcelUp.FrmResult.resources
 E:\工作\1.项目\刘志刚\QfbServer\EXCELDemo\EXCELDemo\obj\x86\Debug\ExcelUp.FrmUser.resources
 E:\工作\1.项目\刘志刚\QfbServer\EXCELDemo\EXCELDemo\obj\x86\Debug\ExcelUp.FrmLogin.resources
-E:\工作\1.项目\刘志刚\QfbServer\EXCELDemo\EXCELDemo\obj\x86\Debug\ExcelUp.FrmMain.resources
 E:\工作\1.项目\刘志刚\QfbServer\EXCELDemo\EXCELDemo\obj\x86\Debug\ExcelUp.FrmIndex.resources
 E:\工作\1.项目\刘志刚\QfbServer\EXCELDemo\EXCELDemo\obj\x86\Debug\ExcelUp.FrmIndex1.resources
 E:\工作\1.项目\刘志刚\QfbServer\EXCELDemo\EXCELDemo\obj\x86\Debug\ExcelUp.FrmIndex2.resources
 E:\工作\1.项目\刘志刚\QfbServer\EXCELDemo\EXCELDemo\obj\x86\Debug\ExcelUp.FrmIndex4.resources
+E:\工作\1.项目\刘志刚\QfbServer\EXCELDemo\EXCELDemo\obj\x86\Debug\ExcelUp.FrmIndex3.resources
+E:\工作\1.项目\刘志刚\QfbServer\EXCELDemo\EXCELDemo\bin\Debug\NPOI.xml

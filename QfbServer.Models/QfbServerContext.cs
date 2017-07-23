@@ -28,7 +28,7 @@ namespace QfbServer.Models
         public DbSet<MeasurementPage> MeasurementPage { get; set; }
         public DbSet<MeasurementPoint> MeasurementPoint { get; set; }
         public DbSet<MeasurementReport> MeasurementReport { get; set; }
-
         public System.Data.Entity.DbSet<QfbServer.Models.MeasureData> MeasureDatas { get; set; }
+        public System.Data.Entity.DbSet<QfbServer.Models.Warning> Warnings { get; set; }
     }
 }

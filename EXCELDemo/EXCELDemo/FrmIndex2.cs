@@ -13,7 +13,7 @@ namespace ExcelUp
 {
     public partial class FrmIndex2 : Form
     {
-        string _temp = "项目号：{0}        零件号：{1}        零件名称：{2}        检测项：{3}";
+        string _temp = "项目号：{0},零件号：{1},零件名称：{2},检测项：{3}";
 
         Microsoft.Practices.EnterpriseLibrary.Data.Database db = Microsoft.Practices.EnterpriseLibrary.Data.DatabaseFactory.CreateDatabase("conn");
 
@@ -97,48 +97,6 @@ namespace ExcelUp
 
         }
 
-        protected override void WndProc(ref Message m)
-        {
-            if (m.Msg == 0x112)
-            {
-                switch ((int)m.WParam)
-                {
-                    //禁止双击标题栏关闭窗体
-                    case 0xF063:
-                    case 0xF093:
-                        m.WParam = IntPtr.Zero;
-                        break;
-
-                    //禁止拖拽标题栏还原窗体
-                    //case 0xF012:
-                    //case 0xF010:
-                    //    m.WParam = IntPtr.Zero;
-                    //    break;
-
-                    //禁止双击标题栏
-                    case 0xf122:
-                        m.WParam = IntPtr.Zero;
-                        break;
-
-
-                    //禁止最大化按钮
-                    case 0xf020:
-                        m.WParam = IntPtr.Zero;
-                        break;
-
-                    //禁止最小化按钮
-                    case 0xf030:
-                        m.WParam = IntPtr.Zero;
-                        break;
-
-                    //禁止还原按钮
-                    case 0xf120:
-                        m.WParam = IntPtr.Zero;
-                        break;
-                }
-            }
-            base.WndProc(ref m);
-        }
 
         private void FrmIndex2_Load(object sender, EventArgs e)
         {

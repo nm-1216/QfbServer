@@ -106,48 +106,6 @@ namespace ExcelUp
 
         }
 
-        protected override void WndProc(ref Message m)
-        {
-            if (m.Msg == 0x112)
-            {
-                switch ((int)m.WParam)
-                {
-                    //禁止双击标题栏关闭窗体
-                    case 0xF063:
-                    case 0xF093:
-                        m.WParam = IntPtr.Zero;
-                        break;
-
-                    //禁止拖拽标题栏还原窗体
-                    case 0xF012:
-                    case 0xF010:
-                        m.WParam = IntPtr.Zero;
-                        break;
-
-                    //禁止双击标题栏
-                    case 0xf122:
-                        m.WParam = IntPtr.Zero;
-                        break;
-
-
-                    //禁止最大化按钮
-                    case 0xf020:
-                        m.WParam = IntPtr.Zero;
-                        break;
-
-                    //禁止最小化按钮
-                    case 0xf030:
-                        m.WParam = IntPtr.Zero;
-                        break;
-
-                    //禁止还原按钮
-                    case 0xf120:
-                        m.WParam = IntPtr.Zero;
-                        break;
-                }
-            }
-            base.WndProc(ref m);
-        }
 
         private void rbtnPad_CheckedChanged(object sender, EventArgs e)
         {

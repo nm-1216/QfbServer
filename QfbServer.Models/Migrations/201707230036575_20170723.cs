@@ -3,7 +3,7 @@ namespace QfbServer.Models.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class _20170723 : DbMigration
     {
         public override void Up()
         {
@@ -12,6 +12,7 @@ namespace QfbServer.Models.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        PointId = c.Int(nullable: false),
                         ProjectId = c.Int(nullable: false),
                         ProjectName = c.String(nullable: false),
                         ProductId = c.Int(nullable: false),
@@ -22,10 +23,18 @@ namespace QfbServer.Models.Migrations
                         PageId = c.Int(nullable: false),
                         MeasurePoint = c.String(),
                         Direction = c.String(),
+                        UpperTolerance = c.String(),
+                        LowerTolerance = c.String(),
                         Value1 = c.String(),
                         Value2 = c.String(),
                         Value3 = c.String(),
                         Value4 = c.String(),
+                        Value5 = c.String(),
+                        Value6 = c.String(),
+                        Value7 = c.String(),
+                        Value8 = c.String(),
+                        Value9 = c.String(),
+                        Value10 = c.String(),
                         Username = c.String(nullable: false),
                         Timestamp = c.Long(nullable: false),
                     })
@@ -120,12 +129,40 @@ namespace QfbServer.Models.Migrations
                     })
                 .PrimaryKey(t => t.Id);
             
+            CreateTable(
+                "dbo.Users",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        username = c.String(),
+                        password = c.String(),
+                        userType = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Warnings",
+                c => new
+                    {
+                        id = c.Int(nullable: false, identity: true),
+                        Message = c.String(),
+                        Filed1 = c.String(),
+                        Filed2 = c.String(),
+                        WarningType = c.String(),
+                        PreWwarningTime = c.DateTime(nullable: false),
+                        DoTime = c.DateTime(),
+                        status = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.id);
+            
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.Pages", "Project_Id", "dbo.Projects");
             DropIndex("dbo.Pages", new[] { "Project_Id" });
+            DropTable("dbo.Warnings");
+            DropTable("dbo.Users");
             DropTable("dbo.Projects");
             DropTable("dbo.Pages");
             DropTable("dbo.MeasurementReports");

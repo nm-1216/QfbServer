@@ -33,11 +33,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmIndex));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.测量标准管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.测量标准导入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.测量标准下发ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.历史查询与分析ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.数据分析ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.检测值分析ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.用户管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.测量标准导入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSearch = new System.Windows.Forms.Button();
             this.cbbLJ = new System.Windows.Forms.ComboBox();
@@ -53,44 +54,62 @@
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Show = new System.Windows.Forms.DataGridViewButtonColumn();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GvList)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.测量标准管理ToolStripMenuItem,
+            this.测量标准导入ToolStripMenuItem,
             this.测量标准下发ToolStripMenuItem,
             this.历史查询与分析ToolStripMenuItem,
-            this.用户管理ToolStripMenuItem,
-            this.测量标准导入ToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.数据分析ToolStripMenuItem,
+            this.检测值分析ToolStripMenuItem,
+            this.用户管理ToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(5, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1014, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(1004, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // 测量标准管理ToolStripMenuItem
+            // 测量标准导入ToolStripMenuItem
             // 
-            this.测量标准管理ToolStripMenuItem.Name = "测量标准管理ToolStripMenuItem";
-            this.测量标准管理ToolStripMenuItem.Size = new System.Drawing.Size(92, 21);
-            this.测量标准管理ToolStripMenuItem.Text = "测量标准管理";
+            this.测量标准导入ToolStripMenuItem.Name = "测量标准导入ToolStripMenuItem";
+            this.测量标准导入ToolStripMenuItem.Size = new System.Drawing.Size(80, 21);
+            this.测量标准导入ToolStripMenuItem.Text = "导入标准库";
+            this.测量标准导入ToolStripMenuItem.Click += new System.EventHandler(this.测量标准导入ToolStripMenuItem_Click);
             // 
             // 测量标准下发ToolStripMenuItem
             // 
             this.测量标准下发ToolStripMenuItem.Name = "测量标准下发ToolStripMenuItem";
-            this.测量标准下发ToolStripMenuItem.Size = new System.Drawing.Size(92, 21);
-            this.测量标准下发ToolStripMenuItem.Text = "测量标准下发";
+            this.测量标准下发ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.测量标准下发ToolStripMenuItem.Text = "标准下发";
             this.测量标准下发ToolStripMenuItem.Click += new System.EventHandler(this.测量标准下发ToolStripMenuItem_Click);
             // 
             // 历史查询与分析ToolStripMenuItem
             // 
             this.历史查询与分析ToolStripMenuItem.Name = "历史查询与分析ToolStripMenuItem";
-            this.历史查询与分析ToolStripMenuItem.Size = new System.Drawing.Size(104, 21);
-            this.历史查询与分析ToolStripMenuItem.Text = "历史查询与分析";
+            this.历史查询与分析ToolStripMenuItem.Size = new System.Drawing.Size(80, 21);
+            this.历史查询与分析ToolStripMenuItem.Text = "检测值查询";
             this.历史查询与分析ToolStripMenuItem.Click += new System.EventHandler(this.历史查询与分析ToolStripMenuItem_Click);
+            // 
+            // 数据分析ToolStripMenuItem
+            // 
+            this.数据分析ToolStripMenuItem.Name = "数据分析ToolStripMenuItem";
+            this.数据分析ToolStripMenuItem.Size = new System.Drawing.Size(80, 21);
+            this.数据分析ToolStripMenuItem.Text = "检测值分析";
+            // 
+            // 检测值分析ToolStripMenuItem
+            // 
+            this.检测值分析ToolStripMenuItem.Name = "检测值分析ToolStripMenuItem";
+            this.检测值分析ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.检测值分析ToolStripMenuItem.Text = "质量预警";
+            this.检测值分析ToolStripMenuItem.Click += new System.EventHandler(this.检测值分析ToolStripMenuItem_Click);
             // 
             // 用户管理ToolStripMenuItem
             // 
@@ -99,24 +118,18 @@
             this.用户管理ToolStripMenuItem.Text = "用户管理";
             this.用户管理ToolStripMenuItem.Click += new System.EventHandler(this.用户管理ToolStripMenuItem_Click);
             // 
-            // 测量标准导入ToolStripMenuItem
-            // 
-            this.测量标准导入ToolStripMenuItem.Name = "测量标准导入ToolStripMenuItem";
-            this.测量标准导入ToolStripMenuItem.Size = new System.Drawing.Size(92, 21);
-            this.测量标准导入ToolStripMenuItem.Text = "测量标准导入";
-            this.测量标准导入ToolStripMenuItem.Click += new System.EventHandler(this.测量标准导入ToolStripMenuItem_Click);
-            // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.cbbLJ);
             this.panel1.Controls.Add(this.cbbXM);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 25);
+            this.panel1.Location = new System.Drawing.Point(5, 85);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1014, 43);
+            this.panel1.Size = new System.Drawing.Size(1004, 43);
             this.panel1.TabIndex = 1;
             // 
             // btnSearch
@@ -170,6 +183,7 @@
             this.GvList.AllowUserToDeleteRows = false;
             this.GvList.AllowUserToResizeRows = false;
             this.GvList.BackgroundColor = System.Drawing.Color.White;
+            this.GvList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GvList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -180,10 +194,11 @@
             this.Delete,
             this.Show});
             this.GvList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GvList.Location = new System.Drawing.Point(0, 68);
+            this.GvList.Location = new System.Drawing.Point(5, 128);
+            this.GvList.Margin = new System.Windows.Forms.Padding(10);
             this.GvList.Name = "GvList";
             this.GvList.RowTemplate.Height = 23;
-            this.GvList.Size = new System.Drawing.Size(1014, 302);
+            this.GvList.Size = new System.Drawing.Size(1004, 313);
             this.GvList.TabIndex = 2;
             this.GvList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GvList_CellContentClick);
             this.GvList.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.GvList_RowPostPaint);
@@ -253,25 +268,47 @@
             // 
             // progressBar1
             // 
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar1.Location = new System.Drawing.Point(172, 164);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(656, 23);
             this.progressBar1.TabIndex = 3;
             this.progressBar1.Visible = false;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(5, 25);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1004, 60);
+            this.panel2.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(10, 5);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(114, 42);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "标准库";
+            // 
             // FrmIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1014, 370);
+            this.ClientSize = new System.Drawing.Size(1014, 441);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.GvList);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximizeBox = false;
             this.Name = "FrmIndex";
+            this.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "上海赛科利质量测量数据管理平台系统";
             this.Load += new System.EventHandler(this.FrmIndex_Load);
@@ -280,6 +317,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GvList)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -288,7 +327,6 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 测量标准管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 测量标准下发ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 历史查询与分析ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 用户管理ToolStripMenuItem;
@@ -308,5 +346,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateTime;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
         private System.Windows.Forms.DataGridViewButtonColumn Show;
+        private System.Windows.Forms.ToolStripMenuItem 数据分析ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 检测值分析ToolStripMenuItem;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label3;
     }
 }

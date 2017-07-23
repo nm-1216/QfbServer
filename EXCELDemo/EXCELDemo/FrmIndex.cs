@@ -124,6 +124,9 @@ namespace ExcelUp
             {
                 DataGridViewColumn column = GvList.Columns[e.ColumnIndex];
                 var id = GvList.Rows[e.RowIndex].Cells["id"].Value.ToString();
+                var ProjectNo = GvList.Rows[e.RowIndex].Cells["ProjectNo"].Value.ToString();
+                var PartNo = GvList.Rows[e.RowIndex].Cells["PartNo"].Value.ToString();
+                var PartName = GvList.Rows[e.RowIndex].Cells["PartName"].Value.ToString();
 
                 if (column is DataGridViewButtonColumn)
                 {
@@ -131,27 +134,30 @@ namespace ExcelUp
 
                     if (temp.DefaultCellStyle.NullValue.ToString() == "删除")
                     {
-                        //"DeleteMeasurementReports"
-
-                        SqlParameter[] p = new SqlParameter[] {
-                            new SqlParameter("@MeasReportID",id),
-                        };
-
-                        var dbc = db.GetStoredProcCommand("DeleteMeasurementReports");
-                        dbc.Parameters.AddRange(p);
-                        var number = db.ExecuteNonQuery(dbc);
-                        if (number > 0)
+                        if (MessageBox.Show("确定要删除数据吗 ?删除数据将不可恢复！", "Confirm Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-                            GvBind();
+
+                            SqlParameter[] p = new SqlParameter[] {
+                                new SqlParameter("@MeasReportID",id),
+                            };
+
+                            var dbc = db.GetStoredProcCommand("DeleteMeasurementReports");
+                            dbc.Parameters.AddRange(p);
+                            var number = db.ExecuteNonQuery(dbc);
+                            if (number > 0)
+                            {
+                                GvBind();
+                            }
+                            else
+                            {
+                                MessageBox.Show("删除失败");
+                            }
                         }
-                        else
-                        {
-                            MessageBox.Show("删除失败");
-                        }
+
                     }
                     else if (temp.DefaultCellStyle.NullValue.ToString() == "查询")
                     {
-                        FrmIndex1 _FrmIndex1 = new FrmIndex1(int.Parse(id));
+                        FrmIndex1 _FrmIndex1 = new FrmIndex1(int.Parse(id), ProjectNo, PartNo, PartName);
                         _FrmIndex1.Show();
                     }
                     else
@@ -162,49 +168,6 @@ namespace ExcelUp
             }
         }
 
-        protected override void WndProc(ref Message m)
-        {
-            if (m.Msg == 0x112)
-            {
-                switch ((int)m.WParam)
-                {
-                    //禁止双击标题栏关闭窗体
-                    case 0xF063:
-                    case 0xF093:
-                        m.WParam = IntPtr.Zero;
-                        break;
-
-                    //禁止拖拽标题栏还原窗体
-                    //case 0xF012:
-                    //case 0xF010:
-                    //    m.WParam = IntPtr.Zero;
-                    //    break;
-
-                    //禁止双击标题栏
-                    case 0xf122:
-                        m.WParam = IntPtr.Zero;
-                        break;
-
-
-                    //禁止最大化按钮
-                    case 0xf020:
-                        m.WParam = IntPtr.Zero;
-                        break;
-
-                    //禁止最小化按钮
-                    case 0xf030:
-                        m.WParam = IntPtr.Zero;
-                        break;
-
-                    //禁止还原按钮
-                    case 0xf120:
-                        m.WParam = IntPtr.Zero;
-                        break;
-                }
-            }
-            base.WndProc(ref m);
-        }
-
         private void 用户管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmUser _frmUser = new FrmUser();
@@ -213,41 +176,44 @@ namespace ExcelUp
 
         private void 测量标准导入ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = "F:\\";
-            openFileDialog.Filter = "2007文件|*.xlsx|2003文件|*.xls";
-            openFileDialog.RestoreDirectory = true;
-            openFileDialog.FilterIndex = 1;
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            if (MessageBox.Show("你确定要导入数据吗？", "Confirm Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                try
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.InitialDirectory = "F:\\";
+                openFileDialog.Filter = "2007文件|*.xlsx|2003文件|*.xls";
+                openFileDialog.RestoreDirectory = true;
+                openFileDialog.FilterIndex = 1;
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    string strError = string.Empty;
-                    var m_ds = ExcelHelper.ExcelToDataSet(openFileDialog.FileName, System.Windows.Forms.Application.StartupPath + @"/XMLFile.xml");
-
-                    if (string.IsNullOrEmpty(strError))
+                    try
                     {
-                        #region XmlFile OK
-                        if (m_ds != null && m_ds.Tables.Count > 0)
+                        string strError = string.Empty;
+                        var m_ds = ExcelHelper.ExcelToDataSet(openFileDialog.FileName, System.Windows.Forms.Application.StartupPath + @"/XMLFile.xml");
+
+                        if (string.IsNullOrEmpty(strError))
                         {
-                            this.progressBar1.Value = 0;
-                            Thread t = new Thread(new ParameterizedThreadStart(InsertDataBase));
-                            t.Start(m_ds);
+                            #region XmlFile OK
+                            if (m_ds != null && m_ds.Tables.Count > 0)
+                            {
+                                this.progressBar1.Value = 0;
+                                Thread t = new Thread(new ParameterizedThreadStart(InsertDataBase));
+                                t.Start(m_ds);
+                            }
+                            #endregion
                         }
-                        #endregion
+                        else
+                        {
+                            #region XmlFile Error
+                            MessageBox.Show(strError);
+                            #endregion
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        #region XmlFile Error
-                        MessageBox.Show(strError);
-                        #endregion
+                        MessageBox.Show(ex.Message);
                     }
                 }
 
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
             }
         }
 
@@ -463,6 +429,12 @@ namespace ExcelUp
         {
             FrmResult _frmResult = new FrmResult();
             _frmResult.Show();
+        }
+
+        private void 检测值分析ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmIndex3 _frmIndex3 = new FrmIndex3();
+            _frmIndex3.Show();
         }
     }
 }
