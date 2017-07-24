@@ -34,7 +34,7 @@ namespace QfbServer.Controllers
             {
                 project_id = b.Min(a => a.MeasReportID),
                 project_name = b.Key,
-                products = db.MeasurementReport.Where(c => c.ProjectNo == b.Key).Select(d => new JsonProducts()
+                products = db.MeasurementReport.Where(c => c.ProjectNo == b.Key && intArray.Contains(c.MeasReportID)).Select(d => new JsonProducts()
                 {
                     product_id = d.MeasReportID,
                     product_name = d.PartName + "(" + d.PartNo + ")",
@@ -62,7 +62,7 @@ namespace QfbServer.Controllers
                 })
             });
 
-            var user = db.Users.Select(b => new { user_id = b.Id, username = b.username, password = b.password });
+            var user = db.Users.Where(b=>b.userType== UserType.Pad).Select(b => new { user_id = b.Id, username = b.username, password = b.password });
 
             JavaScriptSerializer jsonSerialize = new JavaScriptSerializer();
 

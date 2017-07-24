@@ -360,6 +360,8 @@ namespace ExcelUp
 
             excel.DataTableToExcel(ds.Tables[0], "检测值", true);
             excel.Dispose();
+
+            MessageBox.Show("下载成功");
         }
     }
 }

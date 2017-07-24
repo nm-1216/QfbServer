@@ -48,6 +48,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmResult));
             this.Pnl1 = new System.Windows.Forms.Panel();
+            this.btnDown = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtJCX = new System.Windows.Forms.TextBox();
             this.txtCP = new System.Windows.Forms.TextBox();
@@ -57,14 +58,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Pnl2 = new System.Windows.Forms.Panel();
             this.dgvList = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblPage = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnPre = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
             this.ProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TargetName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,7 +80,14 @@
             this.checktime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnDown = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblPage = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnPre = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
             this.Pnl1.SuspendLayout();
             this.Pnl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
@@ -112,6 +112,17 @@
             this.Pnl1.Name = "Pnl1";
             this.Pnl1.Size = new System.Drawing.Size(1004, 37);
             this.Pnl1.TabIndex = 0;
+            // 
+            // btnDown
+            // 
+            this.btnDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDown.Location = new System.Drawing.Point(920, 8);
+            this.btnDown.Name = "btnDown";
+            this.btnDown.Size = new System.Drawing.Size(75, 23);
+            this.btnDown.TabIndex = 3;
+            this.btnDown.Text = "导出";
+            this.btnDown.UseVisualStyleBackColor = true;
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
             // 
             // btnSearch
             // 
@@ -243,90 +254,6 @@
             this.dgvList.TabIndex = 0;
             this.dgvList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvList_CellContentClick);
             this.dgvList.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvList_CellPainting);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.lblPage);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(447, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(557, 60);
-            this.panel1.TabIndex = 0;
-            // 
-            // lblPage
-            // 
-            this.lblPage.AutoSize = true;
-            this.lblPage.Location = new System.Drawing.Point(16, 39);
-            this.lblPage.Name = "lblPage";
-            this.lblPage.Size = new System.Drawing.Size(0, 12);
-            this.lblPage.TabIndex = 3;
-            this.lblPage.Visible = false;
-            // 
-            // label4
-            // 
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(0, 0);
-            this.label4.Name = "label4";
-            this.label4.Padding = new System.Windows.Forms.Padding(0, 0, 10, 5);
-            this.label4.Size = new System.Drawing.Size(437, 60);
-            this.label4.TabIndex = 1;
-            this.label4.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.btnPre);
-            this.panel2.Controls.Add(this.btnNext);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(437, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(120, 60);
-            this.panel2.TabIndex = 2;
-            // 
-            // btnPre
-            // 
-            this.btnPre.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPre.Location = new System.Drawing.Point(5, 34);
-            this.btnPre.Name = "btnPre";
-            this.btnPre.Size = new System.Drawing.Size(50, 23);
-            this.btnPre.TabIndex = 0;
-            this.btnPre.Text = "<<";
-            this.btnPre.UseVisualStyleBackColor = true;
-            this.btnPre.Click += new System.EventHandler(this.btnPre_Click);
-            // 
-            // btnNext
-            // 
-            this.btnNext.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNext.Location = new System.Drawing.Point(65, 34);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(50, 23);
-            this.btnNext.TabIndex = 0;
-            this.btnNext.Text = ">>";
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.label8);
-            this.panel3.Controls.Add(this.panel1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(5, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1004, 60);
-            this.panel3.TabIndex = 1;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft YaHei", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.Location = new System.Drawing.Point(10, 5);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(178, 42);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "检测值查询";
             // 
             // ProjectName
             // 
@@ -571,16 +498,89 @@
             this.Edit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Edit.Width = 60;
             // 
-            // btnDown
+            // panel1
             // 
-            this.btnDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDown.Location = new System.Drawing.Point(920, 8);
-            this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(75, 23);
-            this.btnDown.TabIndex = 3;
-            this.btnDown.Text = "下载";
-            this.btnDown.UseVisualStyleBackColor = true;
-            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.lblPage);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(447, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(557, 60);
+            this.panel1.TabIndex = 0;
+            // 
+            // lblPage
+            // 
+            this.lblPage.AutoSize = true;
+            this.lblPage.Location = new System.Drawing.Point(16, 39);
+            this.lblPage.Name = "lblPage";
+            this.lblPage.Size = new System.Drawing.Size(0, 12);
+            this.lblPage.TabIndex = 3;
+            this.lblPage.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(0, 0);
+            this.label4.Name = "label4";
+            this.label4.Padding = new System.Windows.Forms.Padding(0, 0, 10, 5);
+            this.label4.Size = new System.Drawing.Size(437, 60);
+            this.label4.TabIndex = 1;
+            this.label4.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnPre);
+            this.panel2.Controls.Add(this.btnNext);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(437, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(120, 60);
+            this.panel2.TabIndex = 2;
+            // 
+            // btnPre
+            // 
+            this.btnPre.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPre.Location = new System.Drawing.Point(5, 34);
+            this.btnPre.Name = "btnPre";
+            this.btnPre.Size = new System.Drawing.Size(50, 23);
+            this.btnPre.TabIndex = 0;
+            this.btnPre.Text = "<<";
+            this.btnPre.UseVisualStyleBackColor = true;
+            this.btnPre.Click += new System.EventHandler(this.btnPre_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNext.Location = new System.Drawing.Point(65, 34);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(50, 23);
+            this.btnNext.TabIndex = 0;
+            this.btnNext.Text = ">>";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label8);
+            this.panel3.Controls.Add(this.panel1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(5, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1004, 60);
+            this.panel3.TabIndex = 1;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft YaHei", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label8.Location = new System.Drawing.Point(10, 5);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(178, 42);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "检测值查询";
             // 
             // FrmResult
             // 

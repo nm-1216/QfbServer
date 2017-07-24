@@ -136,10 +136,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/11/2015 10:28:43</publishTime>
     </File>
     <File Include="bin/QfbServer.dll">
-      <publishTime>07/23/2017 11:40:44</publishTime>
+      <publishTime>07/23/2017 21:36:42</publishTime>
     </File>
     <File Include="bin/QfbServer.Models.dll">
-      <publishTime>07/23/2017 11:40:38</publishTime>
+      <publishTime>07/23/2017 17:07:09</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>06/22/2017 10:07:05</publishTime>

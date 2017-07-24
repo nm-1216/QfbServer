@@ -20,6 +20,13 @@ namespace ExcelUp
 
         private funHandle myHandle = null;
 
+
+        FrmIndex4 _frmIndex4;
+        FrmResult _frmResult;
+        FrmIndex3 _frmIndex3;
+        FrmUser _frmUser;
+
+
         public FrmIndex()
         {
             InitializeComponent();
@@ -170,21 +177,32 @@ namespace ExcelUp
 
         private void 用户管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmUser _frmUser = new FrmUser();
-            _frmUser.Show();
+            if (_frmUser == null || _frmUser.IsDisposed)
+            {
+                _frmUser = new FrmUser();
+                _frmUser.Show();
+            }
+            else
+            {
+                _frmUser.Focus();
+                _frmUser.WindowState = FormWindowState.Normal;
+                _frmUser.Show();
+            }
         }
 
         private void 测量标准导入ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("你确定要导入数据吗？", "Confirm Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = "F:\\";
+            openFileDialog.Filter = "2007文件|*.xlsx|2003文件|*.xls";
+            openFileDialog.RestoreDirectory = true;
+            openFileDialog.FilterIndex = 1;
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                openFileDialog.InitialDirectory = "F:\\";
-                openFileDialog.Filter = "2007文件|*.xlsx|2003文件|*.xls";
-                openFileDialog.RestoreDirectory = true;
-                openFileDialog.FilterIndex = 1;
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                if (MessageBox.Show("你确定要导入数据吗？", "Confirm Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
+
                     try
                     {
                         string strError = string.Empty;
@@ -213,8 +231,9 @@ namespace ExcelUp
                         MessageBox.Show(ex.Message);
                     }
                 }
-
             }
+
+
         }
 
         private void InsertDataBase(object ods)
@@ -263,14 +282,14 @@ namespace ExcelUp
                     new SqlParameter("@PartNo",row["PartNo"])
                 };
 
-                var sql=("select ProjectNo,PartNo from MeasurementReports where ProjectNo=@ProjectNo and PartNo=@PartNo");
+                var sql = ("select ProjectNo,PartNo from MeasurementReports where ProjectNo=@ProjectNo and PartNo=@PartNo");
 
 
                 var dbc = db.GetSqlStringCommand(sql);
                 dbc.Parameters.AddRange(p);
                 var temp = db.ExecuteDataSet(dbc);
 
-                if(null!=temp && temp.Tables[0].Rows.Count>0)
+                if (null != temp && temp.Tables[0].Rows.Count > 0)
                 {
                     MessageBox.Show("已经存在 此零件号");
                     return;
@@ -421,20 +440,48 @@ namespace ExcelUp
 
         private void 测量标准下发ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmIndex4 _frmIndex4 = new FrmIndex4();
-            _frmIndex4.Show();
+            if (_frmIndex4 == null||_frmIndex4.IsDisposed)
+            {
+                _frmIndex4 = new FrmIndex4();
+                _frmIndex4.Show();
+            }
+            else
+            {
+                _frmIndex4.Focus();
+                _frmIndex4.WindowState = FormWindowState.Normal;
+                _frmIndex4.Show();
+            }
         }
 
         private void 历史查询与分析ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmResult _frmResult = new FrmResult();
-            _frmResult.Show();
+            if (_frmResult == null || _frmResult.IsDisposed)
+            {
+                _frmResult = new FrmResult();
+                _frmResult.Show();
+            }
+            else
+            {
+                _frmResult.Focus();
+                _frmResult.WindowState = FormWindowState.Normal;
+                _frmResult.Show();
+            }
         }
 
         private void 检测值分析ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmIndex3 _frmIndex3 = new FrmIndex3();
-            _frmIndex3.Show();
+            if (_frmIndex3 == null || _frmIndex3.IsDisposed)
+            {
+                _frmIndex3 = new FrmIndex3();
+                _frmIndex3.Show();
+            }
+            else
+            {
+                _frmIndex3.Focus();
+                _frmIndex3.WindowState = FormWindowState.Normal;
+                _frmIndex3.Show();
+            }
+
         }
     }
 }

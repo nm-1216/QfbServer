@@ -70,6 +70,14 @@ namespace QfbServer.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+
+        public long checktime(DateTime d)
+        {
+            System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1));
+            long timeStamp = (long)(d - startTime).TotalMilliseconds;
+            return timeStamp;
+        }
+
         // POST: api/MeasureDatas
         [ResponseType(typeof(MeasureData))]
         public IHttpActionResult PostMeasureData(MeasureData measureData)
@@ -78,6 +86,30 @@ namespace QfbServer.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+
+            var day1 = DateTime.Parse(measureData.checktime.ToString("yyyy-MM-dd 00:00:01"));
+            var day2 = DateTime.Parse(measureData.checktime.AddDays(1).ToString("yyyy-MM-dd 00:00:01"));
+
+            var t1 = checktime(day1);
+            var t2 = checktime(day2);
+
+
+            var model = db.MeasureDatas.Where(
+                b => b.ProjectName == measureData.ProjectName
+                && b.ProductName == measureData.ProductName
+                && b.TargetName == measureData.TargetName
+                && b.MeasurePoint == measureData.MeasurePoint
+                && b.Direction == measureData.Direction
+                && b.Username == measureData.Username
+                && b.Timestamp > t1
+                && b.Timestamp < t2
+                );
+
+            if (null != model)
+            {
+                db.MeasureDatas.RemoveRange(model);
             }
 
 

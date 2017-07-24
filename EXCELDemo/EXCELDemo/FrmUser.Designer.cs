@@ -43,6 +43,7 @@
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pwd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.Pnl1.SuspendLayout();
@@ -169,7 +170,8 @@
             this.dgvList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.UserType,
-            this.username});
+            this.username,
+            this.Pwd});
             this.dgvList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvList.Location = new System.Drawing.Point(5, 101);
             this.dgvList.Name = "dgvList";
@@ -194,11 +196,18 @@
             // 
             // username
             // 
-            this.username.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.username.DataPropertyName = "username";
             this.username.HeaderText = "用户名";
             this.username.Name = "username";
             this.username.ReadOnly = true;
+            // 
+            // Pwd
+            // 
+            this.Pwd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Pwd.DataPropertyName = "password";
+            this.Pwd.HeaderText = "密码";
+            this.Pwd.Name = "Pwd";
+            this.Pwd.ReadOnly = true;
             // 
             // panel2
             // 
@@ -215,9 +224,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.Location = new System.Drawing.Point(10, 5);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 42);
+            this.label3.Size = new System.Drawing.Size(146, 42);
             this.label3.TabIndex = 2;
-            this.label3.Text = "标准库";
+            this.label3.Text = "用户管理";
             // 
             // FrmUser
             // 
@@ -259,10 +268,11 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RadioButton rbtnPad;
         private System.Windows.Forms.RadioButton rBtnApplication;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserType;
         private System.Windows.Forms.DataGridViewTextBoxColumn username;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pwd;
     }
 }

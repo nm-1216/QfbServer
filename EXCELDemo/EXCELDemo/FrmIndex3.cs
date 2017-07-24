@@ -109,6 +109,16 @@ namespace ExcelUp
 
         private void FrmIndex3_Load(object sender, EventArgs e)
         {
+            Type type = GvList.GetType();
+            System.Reflection.PropertyInfo pi = type.GetProperty("DoubleBuffered",
+            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            pi.SetValue(GvList, true, null);
+
+            foreach (DataGridViewColumn item in this.GvList.Columns)
+            {
+                item.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
             bindBll();
             GvList.AutoGenerateColumns = false;
         }
@@ -119,9 +129,6 @@ namespace ExcelUp
             {
                 DataGridViewColumn column = GvList.Columns[e.ColumnIndex];
                 var id = GvList.Rows[e.RowIndex].Cells["id"].Value.ToString();
-                var ProjectNo = GvList.Rows[e.RowIndex].Cells["ProjectNo"].Value.ToString();
-                var PartNo = GvList.Rows[e.RowIndex].Cells["PartNo"].Value.ToString();
-                var PartName = GvList.Rows[e.RowIndex].Cells["PartName"].Value.ToString();
 
                 if (column is DataGridViewButtonColumn)
                 {
@@ -145,19 +152,34 @@ namespace ExcelUp
                             }
                             else
                             {
-                                MessageBox.Show("删除失败");
+                                MessageBox.Show("提交数据失败");
                             }
                         }
-
-                    }
-                    else if (temp.DefaultCellStyle.NullValue.ToString() == "查询")
-                    {
-                        FrmIndex1 _FrmIndex1 = new FrmIndex1(int.Parse(id), ProjectNo, PartNo, PartName);
-                        _FrmIndex1.Show();
                     }
                     else
                     {
                         MessageBox.Show("未知响应事件");
+                    }
+                }
+            }
+        }
+
+        private void GvList_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow Row = GvList.Rows[e.RowIndex];
+
+                var status = Row.Cells["status"];
+
+                if (null != status.Value && !string.IsNullOrEmpty(status.Value.ToString()))
+                {
+                    if (status.Value.ToString() == "未处理")
+                        status.Style.BackColor = Color.Red;
+                    
+                    else
+                    {
+                        status.Style.BackColor = Color.Green;
                     }
                 }
             }

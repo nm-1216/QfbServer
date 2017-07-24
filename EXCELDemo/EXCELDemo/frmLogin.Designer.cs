@@ -58,7 +58,6 @@
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(239, 21);
             this.txtUser.TabIndex = 0;
-            this.txtUser.Text = "admin";
             // 
             // label2
             // 
@@ -77,7 +76,6 @@
             this.txtPwd.PasswordChar = '*';
             this.txtPwd.Size = new System.Drawing.Size(239, 21);
             this.txtPwd.TabIndex = 1;
-            this.txtPwd.Text = "123456";
             // 
             // btnOk
             // 
