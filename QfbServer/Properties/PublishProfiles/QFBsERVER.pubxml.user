@@ -136,10 +136,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/11/2015 10:28:43</publishTime>
     </File>
     <File Include="bin/QfbServer.dll">
-      <publishTime>07/23/2017 21:36:42</publishTime>
+      <publishTime>09/14/2017 17:36:15</publishTime>
     </File>
     <File Include="bin/QfbServer.Models.dll">
-      <publishTime>07/23/2017 17:07:09</publishTime>
+      <publishTime>08/15/2017 17:32:46</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>06/22/2017 10:07:05</publishTime>
@@ -336,11 +336,38 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/respond.min.js">
       <publishTime>06/22/2017 10:07:04</publishTime>
     </File>
+    <File Include="Service References/ServiceReference1/QfbServer.ServiceReference1.CPKList.datasource">
+      <publishTime>08/28/2017 09:24:06</publishTime>
+    </File>
+    <File Include="Service References/ServiceReference1/QfbServer.ServiceReference1.DateTimeValue.datasource">
+      <publishTime>08/28/2017 09:24:07</publishTime>
+    </File>
+    <File Include="Service References/ServiceReference1/QfbServer.ServiceReference1.DelayWarnning.datasource">
+      <publishTime>08/28/2017 09:24:07</publishTime>
+    </File>
+    <File Include="Service References/ServiceReference1/QfbServer.ServiceReference1.HistoryData.datasource">
+      <publishTime>08/28/2017 09:24:06</publishTime>
+    </File>
+    <File Include="Service References/ServiceReference1/QfbServer.ServiceReference1.ProjectPointSetting.datasource">
+      <publishTime>08/28/2017 09:24:06</publishTime>
+    </File>
+    <File Include="Service References/ServiceReference1/QfbServer.ServiceReference1.QualifiedRate.datasource">
+      <publishTime>08/28/2017 09:24:06</publishTime>
+    </File>
+    <File Include="Service References/ServiceReference1/QfbServer.ServiceReference1.QualifiedRateWarning.datasource">
+      <publishTime>08/28/2017 09:24:06</publishTime>
+    </File>
+    <File Include="Service References/ServiceReference1/QfbServer.ServiceReference1.TrendWarning.datasource">
+      <publishTime>08/28/2017 09:24:07</publishTime>
+    </File>
+    <File Include="Service References/ServiceReference1/QfbServer.ServiceReference1.ValueWarnning.datasource">
+      <publishTime>08/28/2017 09:24:06</publishTime>
+    </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>06/22/2017 10:07:04</publishTime>
     </File>
     <File Include="Views/PostMeasureData/Index.cshtml">
-      <publishTime>06/23/2017 10:28:18</publishTime>
+      <publishTime>09/14/2017 17:26:02</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>06/22/2017 10:07:04</publishTime>
@@ -355,7 +382,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/22/2017 10:07:04</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/22/2017 12:10:30</publishTime>
+      <publishTime>08/28/2017 09:26:40</publishTime>
     </File>
   </ItemGroup>
 </Project>

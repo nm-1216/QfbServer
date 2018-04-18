@@ -1,0 +1,440 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WCFService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/TQCService" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IWCFService_GetSettings_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSettings" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetSettings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetPointIdsByProjectAndPointNO_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPointIdsByProjectAndPointNO" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetPointIdsByProjectAndPointNO_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPointIdsByProjectAndPointNOResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetQualifiedRateByDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQualifiedRateByDate" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetQualifiedRateByDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQualifiedRateByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetQualifiedRateByTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQualifiedRateByTime" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetQualifiedRateByTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQualifiedRateByTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetQualifiedRateByTimeWithPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQualifiedRateByTimeWithPage" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetQualifiedRateByTimeWithPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQualifiedRateByTimeWithPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetQualifiedRateByTimeAndNOs_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQualifiedRateByTimeAndNOs" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetQualifiedRateByTimeAndNOs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQualifiedRateByTimeAndNOsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetQualifiedRateByTimeAndNOsWithPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQualifiedRateByTimeAndNOsWithPage" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetQualifiedRateByTimeAndNOsWithPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQualifiedRateByTimeAndNOsWithPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetQualifiedRateByTimeAndProjrct_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQualifiedRateByTimeAndProjrct" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetQualifiedRateByTimeAndProjrct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQualifiedRateByTimeAndProjrctResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetCPKDataByTimeAndPoints_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCPKDataByTimeAndPoints" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetCPKDataByTimeAndPoints_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCPKDataByTimeAndPointsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetHistoryDataByDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHistoryDataByDate" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetHistoryDataByDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHistoryDataByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetHistoryDataByTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHistoryDataByTime" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetHistoryDataByTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHistoryDataByTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetHistoryDataByTimeAndPoints_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHistoryDataByTimeAndPoints" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetHistoryDataByTimeAndPoints_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHistoryDataByTimeAndPointsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_StartStatic_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartStatic" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_StartStatic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StartStaticResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetChartValue_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetChartValue" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetChartValue_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetChartValueResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetDelayWarning_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDelayWarning" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetDelayWarning_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDelayWarningResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetDelayWarningByTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDelayWarningByTime" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetDelayWarningByTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDelayWarningByTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetValueWarningByTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetValueWarningByTime" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetValueWarningByTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetValueWarningByTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetValueWarningByTimeWithWarning_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetValueWarningByTimeWithWarning" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetValueWarningByTimeWithWarning_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetValueWarningByTimeWithWarningResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetValueWarningByTimeWithWarningAndNO_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetValueWarningByTimeWithWarningAndNO" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetValueWarningByTimeWithWarningAndNO_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetValueWarningByTimeWithWarningAndNOResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetTrendWarningByTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTrendWarningByTime" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetTrendWarningByTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTrendWarningByTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetQualifiedRateWarningByTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQualifiedRateWarningByTime" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetQualifiedRateWarningByTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQualifiedRateWarningByTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetQualifiedRateWarningByTimeAndRate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQualifiedRateWarningByTimeAndRate" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_GetQualifiedRateWarningByTimeAndRate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQualifiedRateWarningByTimeAndRateResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IWCFService">
+    <wsdl:operation name="GetSettings">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetSettings" message="tns:IWCFService_GetSettings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetSettingsResponse" message="tns:IWCFService_GetSettings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPointIdsByProjectAndPointNO">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetPointIdsByProjectAndPointNO" message="tns:IWCFService_GetPointIdsByProjectAndPointNO_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetPointIdsByProjectAndPointNOResponse" message="tns:IWCFService_GetPointIdsByProjectAndPointNO_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQualifiedRateByDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetQualifiedRateByDate" message="tns:IWCFService_GetQualifiedRateByDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetQualifiedRateByDateResponse" message="tns:IWCFService_GetQualifiedRateByDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQualifiedRateByTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetQualifiedRateByTime" message="tns:IWCFService_GetQualifiedRateByTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetQualifiedRateByTimeResponse" message="tns:IWCFService_GetQualifiedRateByTime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQualifiedRateByTimeWithPage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetQualifiedRateByTimeWithPage" message="tns:IWCFService_GetQualifiedRateByTimeWithPage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetQualifiedRateByTimeWithPageResponse" message="tns:IWCFService_GetQualifiedRateByTimeWithPage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQualifiedRateByTimeAndNOs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetQualifiedRateByTimeAndNOs" message="tns:IWCFService_GetQualifiedRateByTimeAndNOs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetQualifiedRateByTimeAndNOsResponse" message="tns:IWCFService_GetQualifiedRateByTimeAndNOs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQualifiedRateByTimeAndNOsWithPage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetQualifiedRateByTimeAndNOsWithPage" message="tns:IWCFService_GetQualifiedRateByTimeAndNOsWithPage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetQualifiedRateByTimeAndNOsWithPageResponse" message="tns:IWCFService_GetQualifiedRateByTimeAndNOsWithPage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQualifiedRateByTimeAndProjrct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetQualifiedRateByTimeAndProjrct" message="tns:IWCFService_GetQualifiedRateByTimeAndProjrct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetQualifiedRateByTimeAndProjrctResponse" message="tns:IWCFService_GetQualifiedRateByTimeAndProjrct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCPKDataByTimeAndPoints">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetCPKDataByTimeAndPoints" message="tns:IWCFService_GetCPKDataByTimeAndPoints_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetCPKDataByTimeAndPointsResponse" message="tns:IWCFService_GetCPKDataByTimeAndPoints_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHistoryDataByDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetHistoryDataByDate" message="tns:IWCFService_GetHistoryDataByDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetHistoryDataByDateResponse" message="tns:IWCFService_GetHistoryDataByDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHistoryDataByTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetHistoryDataByTime" message="tns:IWCFService_GetHistoryDataByTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetHistoryDataByTimeResponse" message="tns:IWCFService_GetHistoryDataByTime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHistoryDataByTimeAndPoints">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetHistoryDataByTimeAndPoints" message="tns:IWCFService_GetHistoryDataByTimeAndPoints_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetHistoryDataByTimeAndPointsResponse" message="tns:IWCFService_GetHistoryDataByTimeAndPoints_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StartStatic">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/StartStatic" message="tns:IWCFService_StartStatic_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/StartStaticResponse" message="tns:IWCFService_StartStatic_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChartValue">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetChartValue" message="tns:IWCFService_GetChartValue_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetChartValueResponse" message="tns:IWCFService_GetChartValue_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDelayWarning">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetDelayWarning" message="tns:IWCFService_GetDelayWarning_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetDelayWarningResponse" message="tns:IWCFService_GetDelayWarning_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDelayWarningByTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetDelayWarningByTime" message="tns:IWCFService_GetDelayWarningByTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetDelayWarningByTimeResponse" message="tns:IWCFService_GetDelayWarningByTime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetValueWarningByTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetValueWarningByTime" message="tns:IWCFService_GetValueWarningByTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetValueWarningByTimeResponse" message="tns:IWCFService_GetValueWarningByTime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetValueWarningByTimeWithWarning">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetValueWarningByTimeWithWarning" message="tns:IWCFService_GetValueWarningByTimeWithWarning_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetValueWarningByTimeWithWarningResponse" message="tns:IWCFService_GetValueWarningByTimeWithWarning_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetValueWarningByTimeWithWarningAndNO">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetValueWarningByTimeWithWarningAndNO" message="tns:IWCFService_GetValueWarningByTimeWithWarningAndNO_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetValueWarningByTimeWithWarningAndNOResponse" message="tns:IWCFService_GetValueWarningByTimeWithWarningAndNO_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTrendWarningByTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetTrendWarningByTime" message="tns:IWCFService_GetTrendWarningByTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetTrendWarningByTimeResponse" message="tns:IWCFService_GetTrendWarningByTime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQualifiedRateWarningByTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetQualifiedRateWarningByTime" message="tns:IWCFService_GetQualifiedRateWarningByTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetQualifiedRateWarningByTimeResponse" message="tns:IWCFService_GetQualifiedRateWarningByTime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQualifiedRateWarningByTimeAndRate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetQualifiedRateWarningByTimeAndRate" message="tns:IWCFService_GetQualifiedRateWarningByTimeAndRate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetQualifiedRateWarningByTimeAndRateResponse" message="tns:IWCFService_GetQualifiedRateWarningByTimeAndRate_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IWCFService" type="tns:IWCFService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSettings">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/GetSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPointIdsByProjectAndPointNO">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/GetPointIdsByProjectAndPointNO" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQualifiedRateByDate">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/GetQualifiedRateByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQualifiedRateByTime">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/GetQualifiedRateByTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQualifiedRateByTimeWithPage">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/GetQualifiedRateByTimeWithPage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQualifiedRateByTimeAndNOs">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/GetQualifiedRateByTimeAndNOs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQualifiedRateByTimeAndNOsWithPage">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/GetQualifiedRateByTimeAndNOsWithPage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQualifiedRateByTimeAndProjrct">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/GetQualifiedRateByTimeAndProjrct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCPKDataByTimeAndPoints">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/GetCPKDataByTimeAndPoints" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHistoryDataByDate">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/GetHistoryDataByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHistoryDataByTime">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/GetHistoryDataByTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHistoryDataByTimeAndPoints">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/GetHistoryDataByTimeAndPoints" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartStatic">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/StartStatic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChartValue">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/GetChartValue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDelayWarning">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/GetDelayWarning" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDelayWarningByTime">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/GetDelayWarningByTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValueWarningByTime">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/GetValueWarningByTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValueWarningByTimeWithWarning">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/GetValueWarningByTimeWithWarning" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValueWarningByTimeWithWarningAndNO">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/GetValueWarningByTimeWithWarningAndNO" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTrendWarningByTime">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/GetTrendWarningByTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQualifiedRateWarningByTime">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/GetQualifiedRateWarningByTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQualifiedRateWarningByTimeAndRate">
+      <soap:operation soapAction="http://tempuri.org/IWCFService/GetQualifiedRateWarningByTimeAndRate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WCFService">
+    <wsdl:port name="BasicHttpBinding_IWCFService" binding="tns:BasicHttpBinding_IWCFService">
+      <soap:address location="http://localhost:8733/TQCService/WCFService/Wcf" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

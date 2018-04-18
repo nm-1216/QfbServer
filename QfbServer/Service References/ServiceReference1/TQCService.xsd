@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/TQCService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/TQCService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:simpleType name="SourceType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="Standard" />
+      <xs:enumeration value="ThreeCoordinate" />
+      <xs:enumeration value="MeasuredValue" />
+      <xs:enumeration value="HistoryData">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">10</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SourceType" nillable="true" type="tns:SourceType" />
+  <xs:complexType name="ArrayOfProjectPointSetting">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProjectPointSetting" nillable="true" type="tns:ProjectPointSetting" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProjectPointSetting" nillable="true" type="tns:ArrayOfProjectPointSetting" />
+  <xs:complexType name="ProjectPointSetting">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChildSettings" nillable="true" type="tns:ArrayOfProjectPointSetting" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="NO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProjectPointSetting" nillable="true" type="tns:ProjectPointSetting" />
+  <xs:complexType name="ArrayOfQualifiedRate">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="QualifiedRate" nillable="true" type="tns:QualifiedRate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfQualifiedRate" nillable="true" type="tns:ArrayOfQualifiedRate" />
+  <xs:complexType name="QualifiedRate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Count" type="xs:int" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Group" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Item" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Parts" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartsNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Product" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Project" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProjectSetting_Id" type="xs:int" />
+      <xs:element minOccurs="0" name="QCount" type="xs:int" />
+      <xs:element minOccurs="0" name="Rate" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="QualifiedRate" nillable="true" type="tns:QualifiedRate" />
+  <xs:complexType name="ArrayOfCPKList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CPKList" nillable="true" type="tns:CPKList" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCPKList" nillable="true" type="tns:ArrayOfCPKList" />
+  <xs:complexType name="CPKList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AvgValue" type="xs:double" />
+      <xs:element minOccurs="0" name="CPK" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Ca" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Count" type="xs:int" />
+      <xs:element minOccurs="0" name="Cp" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="LowerTolerance" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="MaxValue" type="xs:double" />
+      <xs:element minOccurs="0" name="MinValue" type="xs:double" />
+      <xs:element minOccurs="0" name="PointId" type="xs:int" />
+      <xs:element minOccurs="0" name="PointNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PointName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RangeValue" type="xs:double" />
+      <xs:element minOccurs="0" name="Sigma" type="xs:decimal" />
+      <xs:element minOccurs="0" name="StandardValue" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="UpperTolerance" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CPKList" nillable="true" type="tns:CPKList" />
+  <xs:complexType name="ArrayOfHistoryData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="HistoryData" nillable="true" type="tns:HistoryData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHistoryData" nillable="true" type="tns:ArrayOfHistoryData" />
+  <xs:complexType name="HistoryData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Group" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Item" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Parts" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartsNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Point" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PointSetting_Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Product" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Project" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HistoryData" nillable="true" type="tns:HistoryData" />
+  <xs:complexType name="ArrayOfDateTimeValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DateTimeValue" nillable="true" type="tns:DateTimeValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDateTimeValue" nillable="true" type="tns:ArrayOfDateTimeValue" />
+  <xs:complexType name="DateTimeValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Group" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Index" type="xs:int" />
+      <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Value" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DateTimeValue" nillable="true" type="tns:DateTimeValue" />
+  <xs:complexType name="ArrayOfDelayWarnning">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DelayWarnning" nillable="true" type="tns:DelayWarnning" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDelayWarnning" nillable="true" type="tns:ArrayOfDelayWarnning" />
+  <xs:complexType name="DelayWarnning">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Group" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DelayWarnning" nillable="true" type="tns:DelayWarnning" />
+  <xs:complexType name="ArrayOfValueWarnning">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ValueWarnning" nillable="true" type="tns:ValueWarnning" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfValueWarnning" nillable="true" type="tns:ArrayOfValueWarnning" />
+  <xs:complexType name="ValueWarnning">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:HistoryData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IsWarning" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LowerTolerance" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="UpperTolerance" nillable="true" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ValueWarnning" nillable="true" type="tns:ValueWarnning" />
+  <xs:complexType name="ArrayOfTrendWarning">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TrendWarning" nillable="true" type="tns:TrendWarning" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTrendWarning" nillable="true" type="tns:ArrayOfTrendWarning" />
+  <xs:complexType name="TrendWarning">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ItemName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartsNO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartsName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PointName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProjectName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TrendWarning" nillable="true" type="tns:TrendWarning" />
+  <xs:complexType name="ArrayOfQualifiedRateWarning">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="QualifiedRateWarning" nillable="true" type="tns:QualifiedRateWarning" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfQualifiedRateWarning" nillable="true" type="tns:ArrayOfQualifiedRateWarning" />
+  <xs:complexType name="QualifiedRateWarning">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QualifiedRate">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IsWarning" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QualifiedRateWarning" nillable="true" type="tns:QualifiedRateWarning" />
+</xs:schema>

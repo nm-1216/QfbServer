@@ -15,3 +15,4 @@ E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\bin\Debug\Microsoft.Prac
 E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\bin\Debug\Microsoft.Practices.Unity.Interception.dll
 E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\obj\Debug\QfbServer.Models.Migrations._20170723.resources
 E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\obj\Debug\QfbServer.Models.csproj.GenerateResource.Cache
+E:\工作\1.项目\刘志刚\QfbServer\QfbServer.Models\obj\Debug\QfbServer.Models.csprojResolveAssemblyReference.cache

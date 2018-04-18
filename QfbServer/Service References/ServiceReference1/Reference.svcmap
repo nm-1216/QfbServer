@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="de4b8dba-a69e-487b-aa6a-bb1b9b5eded8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://114.55.105.88:8733/TQCService/WCFService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="fae86607-e99e-4236-9a27-e80e85fe42b5" SourceId="1" SourceUrl="http://114.55.105.88:8733/TQCService/WCFService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="afbc3b4a-c18a-4c49-b5ba-86079a270425" SourceId="1" SourceUrl="http://114.55.105.88:8733/TQCService/WCFService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="e0314805-4931-40c8-a1e7-445dec0e730e" SourceId="1" SourceUrl="http://114.55.105.88:8733/TQCService/WCFService/mex" />
+    <MetadataFile FileName="TQCService.xsd" MetadataType="Schema" ID="62ceffbc-8e2d-4620-a19a-9e496724bca1" SourceId="1" SourceUrl="http://114.55.105.88:8733/TQCService/WCFService/mex" />
+    <MetadataFile FileName="System.Collections.Generic.xsd" MetadataType="Schema" ID="d3f98dbe-9e25-4cd1-8e5e-6c17039f9644" SourceId="1" SourceUrl="http://114.55.105.88:8733/TQCService/WCFService/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="341a56b4-364a-4571-8085-30ac760b5327" SourceId="1" SourceUrl="http://114.55.105.88:8733/TQCService/WCFService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
